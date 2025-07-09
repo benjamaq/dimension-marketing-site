@@ -25,20 +25,17 @@ export default function Home() {
 
       {/* Hero Section */}
       <main className="flex flex-col items-center justify-center flex-1 w-full px-4 pt-10 pb-16">
-        <div className="flex flex-col items-center justify-center w-full" style={{minHeight:'44vh'}}>
-          <h1 className="font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-center mb-4" style={{fontFamily:'inherit'}}>
+        <div className="flex flex-col items-center justify-center w-full mt-2 mb-2">
+          <h1 className="font-light text-gray-800 text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-center mb-6" style={{fontFamily:'inherit'}}>
             The next Dimension of health feels like having a<br className="hidden md:inline" /> friend who truly gets you
           </h1>
-          <h2 className="text-2xl md:text-3xl font-normal text-gray-700 text-center mb-14">Meet Your Daily Health Champion</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-700 text-center mt-2 mb-10">Meet Your Daily Health Champion</h2>
         </div>
-        <section className="flex flex-row gap-20 md:gap-32 items-start justify-center w-full max-w-5xl mt-2">
+        <section className="flex flex-row gap-20 md:gap-32 items-start justify-center w-full max-w-5xl mt-0">
           {/* Wil Card */}
           <div className="flex flex-col items-center w-80">
             <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl w-64 h-64 md:w-80 md:h-80 mb-6">
-              <Image src="/will.png" alt="Wil" width={320} height={320} className="object-cover w-full h-full" />
-              <span className="absolute top-3 right-3 bg-white rounded-full p-2 shadow flex items-center justify-center">
-                <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#4B5563" strokeWidth="1.5"/><path d="M8 12.5l2.5 2.5L16 9.5" stroke="#4B5563" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </span>
+              <Image src="/will.png" alt="Wil portrait photo" width={320} height={320} className="object-cover w-full h-full" unoptimized />
             </div>
             <div className="text-center">
               <div className="font-semibold text-xl text-gray-800 mb-3">Wil</div>
@@ -50,10 +47,7 @@ export default function Home() {
           {/* Ellie Card */}
           <div className="flex flex-col items-center w-80">
             <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl w-64 h-64 md:w-80 md:h-80 mb-6">
-              <Image src="/elli.png" alt="Ellie" width={320} height={320} className="object-cover w-full h-full" />
-              <span className="absolute top-3 right-3 bg-white rounded-full p-2 shadow flex items-center justify-center">
-                <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><path d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.5 16 21 16 21H12Z" stroke="#E11D48" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              </span>
+              <Image src="/elli.png" alt="Ellie" width={320} height={320} className="object-cover w-full h-full" unoptimized />
             </div>
             <div className="text-center">
               <div className="font-semibold text-xl text-gray-800 mb-3">Ellie</div>
