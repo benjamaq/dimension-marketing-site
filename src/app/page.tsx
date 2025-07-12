@@ -126,7 +126,151 @@ function useFadeInUpAnimation() {
       document.head.removeChild(style);
     };
   }, []);
-};
+}
+
+// Reusable Profile Card Component
+function ProfileCard({ story, isPreview = false, onClick }: { story: Story; isPreview?: boolean; onClick?: () => void }) {
+  const baseScale = isPreview ? 'scale-75' : 'scale-100';
+  const width = isPreview ? 'w-80' : 'w-96';
+  const height = isPreview ? 'h-[435px]' : 'h-[580px]';
+  
+  return (
+    <div className={`${width} ${baseScale} origin-center transition-all duration-300 ${onClick ? 'cursor-pointer hover:scale-105' : ''}`} onClick={onClick}>
+      <div className={`bg-gradient-to-br from-gray-100 via-white to-gray-50 rounded-2xl shadow-xl border border-gray-300 overflow-hidden ${height} flex flex-col`}>
+        {/* Header */}
+        <div className="bg-gradient-to-r from-gray-800 to-gray-700 p-4 text-white">
+          <div className="flex items-center mb-2">
+            <img 
+              src={story.image} 
+              alt={story.name} 
+              className={`${isPreview ? 'w-10 h-10' : 'w-14 h-14'} rounded-full object-cover border-2 border-white shadow-lg mr-3`}
+            />
+            <div>
+              <div className={`font-bold ${isPreview ? 'text-base' : 'text-xl'} text-white`}>
+                {story.name}, {story.age}
+              </div>
+            </div>
+          </div>
+          <div className={`text-gray-200 ${isPreview ? 'text-xs' : 'text-sm'} italic leading-relaxed`}>
+            {story.descriptor}
+          </div>
+        </div>
+        
+        <div className={`${isPreview ? 'p-3' : 'p-5'} flex-1 flex flex-col`}>              
+          {/* Health & Life in 2x2 grid */}
+          <div className={`grid grid-cols-2 ${isPreview ? 'gap-2 mb-2' : 'gap-4 mb-4'}`}>
+            <div className="bg-white rounded-lg p-2 border border-gray-200 shadow-sm">
+              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Health Challenges</h4>
+              <div className="space-y-1">
+                <div className="text-xs text-gray-800">
+                  • {story.key === 'rachel' ? 'Constant fatigue despite 8hrs in bed' : 
+                     story.key === 'sine' ? 'Emotional eating cycles' :
+                     story.key === 'yara' ? 'Hormonal swings' :
+                     story.key === 'leo' ? 'Sleep disruption' : 'Joint stiffness'}
+                </div>
+                {!isPreview && (
+                  <>
+                    <div className="text-xs text-gray-800">
+                      • {story.key === 'rachel' ? 'Light, broken sleep' : 
+                         story.key === 'sine' ? 'Afternoon energy dips' :
+                         story.key === 'yara' ? 'Neck/shoulder pain' :
+                         story.key === 'leo' ? 'Over-reliance on stimulants' : 'Poor sleep hygiene'}
+                    </div>
+                    <div className="text-xs text-gray-800">
+                      • {story.key === 'rachel' ? 'Zero time for herself' : 
+                         story.key === 'sine' ? 'Social isolation' :
+                         story.key === 'yara' ? 'Low libido' :
+                         story.key === 'leo' ? 'Suppressed emotions' : 'Internalized stress'}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-lg p-2 border border-gray-200 shadow-sm">
+              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Life Context</h4>
+              <div className="space-y-1">
+                <div className="text-xs text-gray-800">
+                  • {story.key === 'rachel' ? 'Full-time work' : 
+                     story.key === 'sine' ? 'Single mom' :
+                     story.key === 'yara' ? 'Part-time teacher' :
+                     story.key === 'leo' ? 'Executive in tech' : 'Manages family business'}
+                </div>
+                {!isPreview && (
+                  <>
+                    <div className="text-xs text-gray-800">
+                      • {story.key === 'rachel' ? 'Two small kids' : 
+                         story.key === 'sine' ? 'Freelance creative' :
+                         story.key === 'yara' ? 'Three teens' :
+                         story.key === 'leo' ? 'Two young kids' : 'Adult children at home'}
+                    </div>
+                    <div className="text-xs text-gray-800">
+                      • {story.key === 'rachel' ? 'Aging parents' : 
+                         story.key === 'sine' ? 'Always "on"' :
+                         story.key === 'yara' ? 'Manages home + eldercare' :
+                         story.key === 'leo' ? 'Often traveling' : 'Aging parents in care'}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+
+            <div className="bg-gray-50 rounded-lg p-2 border border-gray-200">
+              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Tech & Tracking</h4>
+              <div className="text-xs text-gray-800">
+                {story.key === 'rachel' ? '🍎 Apple Watch' : 
+                 story.key === 'sine' ? '⌚ Garmin' :
+                 story.key === 'yara' ? '🚫 None' :
+                 story.key === 'leo' ? '💍 Oura Ring' : '📱 Apple Health'}
+              </div>
+            </div>
+            
+            <div className="bg-gray-50 rounded-lg p-2 border border-gray-200">
+              <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Energy & Stress</h4>
+              <div className="text-xs text-gray-800">
+                Energy: {story.key === 'rachel' ? '🪫 2/10' : 
+                         story.key === 'sine' ? '⚡️ 4/10' :
+                         story.key === 'yara' ? '🔋 3/10' :
+                         story.key === 'leo' ? '🔌 6/10' : '💡 5/10'}
+              </div>
+              {!isPreview && (
+                <div className="text-xs text-gray-800 mt-1">
+                  Stress: {story.key === 'rachel' ? '🔥 9/10' : 
+                           story.key === 'sine' ? '🔥 8/10' :
+                           story.key === 'yara' ? '🔥 8/10' :
+                           story.key === 'leo' ? '🔥 8/10' : '🔥 7/10'}
+                </div>
+              )}
+            </div>
+          </div>
+          
+          {/* What they need */}
+          <div className={`bg-gradient-to-r from-gray-800 to-gray-700 rounded-lg ${isPreview ? 'p-2 mb-2' : 'p-4 mb-4'} text-white`}>
+            <h4 className="text-xs font-semibold text-gray-300 uppercase tracking-wide mb-1">The Right Support</h4>
+            <p className={`${isPreview ? 'text-xs' : 'text-sm'} leading-relaxed`}>
+              {story.key === 'rachel' ? 'Practical, calming advice — someone who can cut through the noise.' :
+               story.key === 'sine' ? 'A non-judgmental mirror. Tools that fit her rhythm, not fight it.' :
+               story.key === 'yara' ? 'A nudge toward self-priority. Emotional space and daily sanity.' :
+               story.key === 'leo' ? 'Direct, science-backed insight plus reminders to slow the hell down.' : 'A grounded companion — with calm, steady motivation and zero fluff.'}
+            </p>
+          </div>
+          
+          {/* CTA */}
+          {!isPreview && (
+            <div className="mt-auto">
+              <button className="w-full text-gray-600 hover:text-gray-900 font-medium py-3 transition-all text-sm flex items-center justify-center gap-2">
+                <span>View conversation</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function RealStories() {
   useFadeInUpAnimation();
@@ -149,7 +293,11 @@ function RealStories() {
     setCurrentStoryIndex(index);
     setSelectedChat(index);
     setShowingFullChat(false);
+    
+    // Start with empty messages and load them progressively
     setChatMessages([]);
+    
+    // Load messages one by one with delays
     const allMessages = STORIES[index].chat;
     allMessages.forEach((message, messageIndex) => {
       setTimeout(() => {
@@ -158,19 +306,14 @@ function RealStories() {
     });
   };
 
-  const showFullConversation = () => {
-    if (selectedChat !== null) {
-      setShowingFullChat(true);
-      // All messages are already progressively loaded
-    }
-  };
-
   const nextStory = () => {
     const next = (currentStoryIndex + 1) % STORIES.length;
     setCurrentStoryIndex(next);
     if (selectedChat !== null) {
       setSelectedChat(next);
       setShowingFullChat(false);
+      
+      // Progressive loading for navigation too
       setChatMessages([]);
       const allMessages = STORIES[next].chat;
       allMessages.forEach((message, messageIndex) => {
@@ -187,6 +330,8 @@ function RealStories() {
     if (selectedChat !== null) {
       setSelectedChat(prev);
       setShowingFullChat(false);
+      
+      // Progressive loading for navigation too
       setChatMessages([]);
       const allMessages = STORIES[prev].chat;
       allMessages.forEach((message, messageIndex) => {
@@ -201,179 +346,42 @@ function RealStories() {
 
   return (
     <div className="w-full max-w-7xl mx-auto">
-      
+      {/* Instruction section */}
+      <div className="text-center mb-6">
+        <div className="inline-flex items-center bg-blue-50 rounded-full px-6 py-3 mb-4">
+          <span className="text-sm font-medium text-blue-700">
+            👆 Click on profiles or use arrows to explore • 💬 See live conversations
+          </span>
+        </div>
+      </div>
 
-      {/* Main Layout: peek + main card + chat - INCREASED SIZES */}
-      <div className="flex items-center justify-center gap-4">
+      {/* Main Layout: preview card + main card + chat */}
+      <div className="flex items-center justify-center gap-8">
         
         {/* Navigation arrows */}
         <button 
           onClick={prevStory}
-          className="bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all z-30"
+          className="bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all z-30"
         >
-          <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
-        {/* LEFT: Single peek card (partial) - MADE TO LOOK LIKE MAIN CARD */}
-        <div className="w-20 h-[580px] overflow-hidden opacity-70 -mr-6 z-0">
-          <div 
-            className="bg-gradient-to-br from-gray-100 via-white to-gray-50 rounded-l-2xl shadow-md border-l border-t border-b border-gray-300 h-full cursor-pointer hover:opacity-90 transition-all"
-            onClick={prevStory}
-          >
-            {/* Mini header like main card */}
-            <div className="bg-gradient-to-r from-gray-800 to-gray-700 p-2 text-white rounded-tl-2xl">
-              <div className="flex flex-col items-center">
-                <img 
-                  src={STORIES[getPrevIndex()].image} 
-                  alt={STORIES[getPrevIndex()].name} 
-                  className="w-8 h-8 rounded-full object-cover border border-white shadow-sm mb-1" 
-                />
-                <div className="text-xs font-semibold text-white text-center leading-tight">
-                  {STORIES[getPrevIndex()].name}
-                </div>
-              </div>
-            </div>
-            
-            {/* Mini content */}
-            <div className="p-2">
-              <div className="text-xs text-gray-700 leading-relaxed">
-                {STORIES[getPrevIndex()].descriptor.substring(0, 40)}...
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* LEFT: Preview card - EXACT SAME LAYOUT, JUST SCALED */}
+        <ProfileCard 
+          story={STORIES[getPrevIndex()]} 
+          isPreview={true} 
+          onClick={prevStory}
+        />
 
-        {/* CENTER: Main profile card - INCREASED SIZE & BETTER LAYOUT */}
-        <div className="w-96 z-10">
-          <div className="bg-gradient-to-br from-gray-100 via-white to-gray-50 rounded-2xl shadow-xl border border-gray-300 overflow-hidden h-[580px] flex flex-col">
-            {/* Header with descriptor */}
-            <div className="bg-gradient-to-r from-gray-800 to-gray-700 p-5 text-white">
-              <div className="flex items-center mb-3">
-                <img 
-                  src={STORIES[currentStoryIndex].image} 
-                  alt={STORIES[currentStoryIndex].name} 
-                  className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-lg mr-4" 
-                />
-                <div>
-                  <div className="font-bold text-xl text-white">
-                    {STORIES[currentStoryIndex].name}, {STORIES[currentStoryIndex].age}
-                  </div>
-                </div>
-              </div>
-              {/* Moved descriptor here for better visibility */}
-              <div className="text-gray-200 text-sm italic leading-relaxed">
-                {STORIES[currentStoryIndex].descriptor}
-              </div>
-            </div>
-            
-            <div className="p-5 flex-1 flex flex-col">              
-              {/* Health & Life in 2x2 grid */}
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
-                  <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Health Challenges</h4>
-                  <div className="space-y-2">
-                    <div className="text-xs text-gray-800">
-                      • {currentStoryIndex === 0 ? 'Constant fatigue despite 8hrs in bed' : 
-                         currentStoryIndex === 1 ? 'Emotional eating cycles' :
-                         currentStoryIndex === 2 ? 'Hormonal swings' :
-                         currentStoryIndex === 3 ? 'Sleep disruption' : 'Joint stiffness'}
-                    </div>
-                    <div className="text-xs text-gray-800">
-                      • {currentStoryIndex === 0 ? 'Light, broken sleep' : 
-                         currentStoryIndex === 1 ? 'Afternoon energy dips' :
-                         currentStoryIndex === 2 ? 'Neck/shoulder pain' :
-                         currentStoryIndex === 3 ? 'Over-reliance on stimulants' : 'Poor sleep hygiene'}
-                    </div>
-                    <div className="text-xs text-gray-800">
-                      • {currentStoryIndex === 0 ? 'Zero time for herself' : 
-                         currentStoryIndex === 1 ? 'Social isolation' :
-                         currentStoryIndex === 2 ? 'Low libido' :
-                         currentStoryIndex === 3 ? 'Suppressed emotions' : 'Internalized stress'}
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
-                  <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Life Context</h4>
-                  <div className="space-y-2">
-                    <div className="text-xs text-gray-800">
-                      • {currentStoryIndex === 0 ? 'Full-time work' : 
-                         currentStoryIndex === 1 ? 'Single mom' :
-                         currentStoryIndex === 2 ? 'Part-time teacher' :
-                         currentStoryIndex === 3 ? 'Executive in tech' : 'Manages family business'}
-                    </div>
-                    <div className="text-xs text-gray-800">
-                      • {currentStoryIndex === 0 ? 'Two small kids' : 
-                         currentStoryIndex === 1 ? 'Freelance creative' :
-                         currentStoryIndex === 2 ? 'Three teens' :
-                         currentStoryIndex === 3 ? 'Two young kids' : 'Adult children at home'}
-                    </div>
-                    <div className="text-xs text-gray-800">
-                      • {currentStoryIndex === 0 ? 'Aging parents' : 
-                         currentStoryIndex === 1 ? 'Always "on"' :
-                         currentStoryIndex === 2 ? 'Manages home + eldercare' :
-                         currentStoryIndex === 3 ? 'Often traveling' : 'Aging parents in care'}
-                    </div>
-                  </div>
-                </div>
+        {/* CENTER: Main profile card */}
+        <ProfileCard 
+          story={STORIES[currentStoryIndex]} 
+          onClick={() => handleStorySelect(currentStoryIndex)}
+        />
 
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                  <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Tech & Tracking</h4>
-                  <div className="text-xs text-gray-800">
-                    {currentStoryIndex === 0 ? '🍎 Apple Watch — wears daily, ignores alerts' : 
-                     currentStoryIndex === 1 ? '⌚ Garmin — basic step use only' :
-                     currentStoryIndex === 2 ? '🚫 None — goes by "gut feel"' :
-                     currentStoryIndex === 3 ? '💍 Oura Ring + WHOOP — obsessed with numbers' : '📱 Apple Health — passive use'}
-                  </div>
-                </div>
-                
-                <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                  <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Energy & Stress</h4>
-                  <div className="text-xs text-gray-800">
-                    Energy: {currentStoryIndex === 0 ? '🪫 2/10' : 
-                             currentStoryIndex === 1 ? '⚡️ 4/10' :
-                             currentStoryIndex === 2 ? '🔋 3/10' :
-                             currentStoryIndex === 3 ? '🔌 6/10' : '💡 5/10'}
-                  </div>
-                  <div className="text-xs text-gray-800 mt-1">
-                    Stress: {currentStoryIndex === 0 ? '🔥 9/10' : 
-                             currentStoryIndex === 1 ? '🔥 8/10' :
-                             currentStoryIndex === 2 ? '🔥 8/10' :
-                             currentStoryIndex === 3 ? '🔥 8/10' : '🔥 7/10'}
-                  </div>
-                </div>
-              </div>
-              
-              {/* What they need */}
-              <div className="bg-gradient-to-r from-gray-800 to-gray-700 rounded-lg p-4 mb-4 text-white">
-                <h4 className="text-xs font-semibold text-gray-300 uppercase tracking-wide mb-2">The Right Support</h4>
-                <p className="text-sm leading-relaxed">
-                  {currentStoryIndex === 0 ? 'Practical, calming advice — someone who can cut through the noise.' :
-                   currentStoryIndex === 1 ? 'A non-judgmental mirror. Tools that fit her rhythm, not fight it.' :
-                   currentStoryIndex === 2 ? 'A nudge toward self-priority. Emotional space and daily sanity.' :
-                   currentStoryIndex === 3 ? 'Direct, science-backed insight plus reminders to slow the hell down.' : 'A grounded companion — with calm, steady motivation and zero fluff.'}
-                </p>
-              </div>
-              
-              {/* Simple text CTA */}
-              <div className="mt-auto">
-                <button
-                  className="w-full text-gray-600 hover:text-gray-900 font-medium py-3 transition-all text-sm flex items-center justify-center gap-2"
-                  onClick={() => handleStorySelect(currentStoryIndex)}
-                >
-                  <span>View conversation</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT: Chat box - INCREASED SIZE with better visibility */}
+        {/* RIGHT: Chat box */}
         <div className="w-96 z-10">
           {selectedChat === null ? (
             <div className="bg-white rounded-3xl shadow-lg border border-gray-200 p-8 text-center h-[580px] flex items-center justify-center">
@@ -389,7 +397,7 @@ function RealStories() {
             </div>
           ) : (
             <div className="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden animate-fadeInUp h-[580px] flex flex-col">
-              {/* Clean header */}
+              {/* Chat header */}
               <div className="p-5 text-center border-b border-gray-100">
                 <div className="flex justify-center mb-4">
                   <img 
@@ -406,61 +414,73 @@ function RealStories() {
                 </div>
               </div>
               
-              {/* Chat messages area - PROGRESSIVE LOADING */}
-<div className="flex-1 p-5 flex flex-col">
-  {/* Show messages as they load progressively */}
-  <div className="space-y-4 flex-1 overflow-y-auto max-h-96">
-    {chatMessages.map((msg: ChatMessage, index: number) => (
-      <div key={index} className={`flex ${msg.from === STORIES[selectedChat].responder ? 'justify-start' : 'justify-end'} animate-fadeInUp`}>
-        {msg.from === STORIES[selectedChat].responder ? (
-          <div className="flex items-start gap-3">
-            <img 
-              src={STORIES[selectedChat].responderAvatar} 
-              alt={STORIES[selectedChat].responder} 
-              className="w-8 h-8 rounded-full flex-shrink-0 mt-1" 
-            />
-            <div className="bg-gray-100 text-gray-800 rounded-2xl px-5 py-4 max-w-[85%] border border-gray-200">
-              <div className="text-sm font-medium mb-2 text-gray-600">{msg.from}</div>
-              <div className="text-sm leading-relaxed text-gray-800">
-                {msg.text}
+              {/* Chat messages area */}
+              <div className="flex-1 p-5 flex flex-col">
+                <div className="space-y-4 flex-1 overflow-y-auto max-h-96">
+                  {chatMessages.map((msg: ChatMessage, index: number) => (
+                    <div key={index} className={`flex ${msg.from === STORIES[selectedChat].responder ? 'justify-start' : 'justify-end'} animate-fadeInUp`}>
+                      {msg.from === STORIES[selectedChat].responder ? (
+                        <div className="flex items-start gap-3">
+                          <img 
+                            src={STORIES[selectedChat].responderAvatar} 
+                            alt={STORIES[selectedChat].responder} 
+                            className="w-8 h-8 rounded-full flex-shrink-0 mt-1" 
+                          />
+                          <div className="bg-gray-100 text-gray-800 rounded-2xl px-5 py-4 max-w-[85%] border border-gray-200">
+                            <div className="text-sm font-medium mb-2 text-gray-600">{msg.from}</div>
+                            <div className="text-sm leading-relaxed text-gray-800">
+                              {msg.text}
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="bg-gray-900 text-white rounded-2xl px-5 py-4 max-w-[85%] shadow-sm">
+                          <div className="text-sm leading-relaxed text-white">
+                            {msg.text}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Loading indicator */}
+                {chatMessages.length < STORIES[selectedChat].chat.length && (
+                  <div className="text-center py-4">
+                    <div className="inline-flex items-center text-gray-500 text-sm">
+                      <div className="animate-pulse mr-2">💬</div>
+                      <span>Loading conversation...</span>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          </div>
-        ) : (
-          <div className="bg-gray-900 text-white rounded-2xl px-5 py-4 max-w-[85%] shadow-sm">
-            <div className="text-sm leading-relaxed text-white">
-              {msg.text}
-            </div>
-          </div>
-        )}
-      </div>
-    ))}
-  </div>
-
-  {/* Show loading indicator if messages are still coming */}
-  {chatMessages.length < STORIES[selectedChat].chat.length && (
-    <div className="text-center py-4">
-      <div className="inline-flex items-center text-gray-500 text-sm">
-        <div className="animate-pulse mr-2">💬</div>
-        <span>Loading conversation...</span>
-      </div>
-    </div>
-  )}
-</div>
-
             </div>
           )}
         </div>
 
         <button 
           onClick={nextStory}
-          className="bg-white rounded-full p-2 shadow-lg hover:shadow-xl transition-all z-30"
+          className="bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-all z-30"
         >
-          <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
+
+      {/* Current conversation indicator */}
+      {selectedChat !== null && (
+        <div className="text-center mt-6">
+          <div className="inline-flex items-center bg-gray-100 rounded-full px-6 py-3">
+            <span className="text-sm font-medium text-gray-700">
+              👀 Currently viewing: <strong>{STORIES[selectedChat].responder}'s conversation with {STORIES[selectedChat].name}</strong>
+            </span>
+            <svg className="w-4 h-4 ml-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+      )}
 
       {/* Navigation dots */}
       <div className="flex justify-center mt-6 gap-2">
@@ -509,15 +529,18 @@ export default function Home() {
 
         <main className="flex flex-col items-center justify-center flex-1 w-full px-4 pt-10 pb-16">
           <div className="flex flex-col items-center justify-center w-full mt-2 mb-8">
-            <h1 className="font-light text-gray-800 text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-center mb-10">
-              The next Dimension of health feels like having a<br className="hidden md:inline" /> friend who truly gets you
+            <h1 className="font-light text-gray-800 text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-center mb-6">
+              You've carried your health alone for long enough
             </h1>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-700 text-center mb-8">
-              Meet Your Daily Health Champion
+            <p className="text-2xl md:text-3xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
+              The next dimension is the best version of you
+            </p>
+            <h2 className="text-2xl text-gray-600 font-medium text-center mb-12">
+              Meet your daily health champion
             </h2>
           </div>
 
-          <section className="flex flex-col md:flex-row gap-12 md:gap-20 items-center justify-center w-full max-w-4xl mb-6">
+          <section className="flex flex-col md:flex-row gap-12 md:gap-20 items-center justify-center w-full max-w-4xl mb-12">
             <div className="flex flex-col items-center">
               <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl w-48 h-48 md:w-64 md:h-64 mb-4">
                 <img src="/will.png" alt="Wil" className="object-cover w-full h-full" />
@@ -543,15 +566,22 @@ export default function Home() {
             </div>
           </section>
 
-          
+          <div className="text-center mb-16">
+            <p className="text-2xl text-gray-600 font-medium">
+              Health wisdom from experts, delivered like a friend
+            </p>
+          </div>
 
           <section className="w-full px-4">
             <div className="text-center mb-6">
               <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-4">
                 👉 <strong>Real People. Real Conversations.</strong>
               </h2>
-              <p className="text-lg text-gray-600 font-medium">
+              <p className="text-lg text-gray-600 font-medium mb-2">
                 See how Dimension responds in the moments that matter.
+              </p>
+              <p className="text-base text-gray-500 max-w-2xl mx-auto">
+                Click through real profiles to see how Ellie and Wil provide personalized support for different people and situations.
               </p>
             </div>
             <RealStories />
