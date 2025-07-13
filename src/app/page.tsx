@@ -132,97 +132,92 @@ function useFadeInUpAnimation() {
 
 export default function Home() {
   return (
-    <div
-      className="min-h-screen w-full flex flex-col bg-white relative overflow-hidden"
-      style={{
-        backgroundImage: "url('/background.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 z-[1] pointer-events-none"
-        style={{ background: 'rgba(255,255,255,0.6)' }}
-      />
-      
-      <div className="relative z-[2] flex flex-col min-h-screen w-full">
-        <header className="w-full flex items-center justify-between px-10 pt-8">
-          <div className="flex items-center">
-            <img src="/logo.png" alt="DIMENSION Logo" width="40" height="40" className="mr-3" />
-            <span className="font-bold text-xl tracking-wide text-gray-900">DIMENSION</span>
-          </div>
-          <nav className="flex gap-10 text-base font-light text-gray-700">
-            <a href="#meet" className="hover:text-gray-900 transition-colors">Meet Them</a>
-            <a href="#get-started" className="hover:text-gray-900 transition-colors">Get Started</a>
-          </nav>
-        </header>
+    <>
+      {/* HERO + REAL STORIES SECTIONS WITH SHARED BACKGROUND */}
+      <section
+        className="relative w-full"
+        style={{
+          backgroundImage: "url('/largebg.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* White overlay with 15% opacity */}
+        <div style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',background:'rgba(255,255,255,0.6)',zIndex:1,pointerEvents:'none'}} />
+        <div style={{position:'relative',zIndex:2}}>
 
-        <main className="flex flex-col items-center justify-center flex-1 w-full px-4 pt-10 pb-16">
-          <div className="flex flex-col items-center justify-center w-full mt-2 mb-8">
-            <h1 className="font-light text-gray-800 text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-center mb-6">
-              You&apos;ve carried your health alone for long enough
-            </h1>
-            <p className="text-2xl md:text-3xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-              The next dimension is the best version of you
-            </p>
-            <h2 className="text-2xl text-gray-600 font-medium text-center mb-12">
-              Meet your daily health champion
+        {/* HERO SECTION */}
+        <div className="flex flex-col w-full">
+          <header className="w-full flex items-center justify-between px-10 pt-8">
+            <div className="flex items-center">
+              <img src="/logo.png" alt="DIMENSION Logo" width="40" height="40" className="mr-3" />
+              <span className="font-bold text-xl tracking-wide text-gray-900">DIMENSION</span>
+            </div>
+            <nav className="flex gap-10 text-base font-light text-gray-700">
+              <a href="#meet" className="hover:text-gray-900 transition-colors">Meet Them</a>
+              <a href="#get-started" className="hover:text-gray-900 transition-colors">Get Started</a>
+            </nav>
+          </header>
+          <main className="flex flex-col items-center justify-center flex-1 w-full px-4 pt-10 pb-16">
+            <div className="flex flex-col items-center justify-center w-full mt-2 mb-8">
+              <h1 className="font-light text-gray-800 text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-center mb-6">
+                You&apos;ve carried your health alone for long enough
+              </h1>
+              <div className="text-2xl md:text-3xl text-gray-800 text-center font-light mb-2">
+                Not Anymore
+              </div>
+              <hr className="mx-auto w-16 border-t-2 border-gray-300 mb-8" />
+            </div>
+            <div className="w-full flex flex-col items-center mb-8">
+              <h2 className="text-4xl md:text-5xl font-light text-center text-gray-800 tracking-tight mb-2">
+                Meet Your New
+              </h2>
+              <div className="text-5xl md:text-6xl font-light text-center text-gray-900 tracking-tight">
+                SUPERPOWER
+              </div>
+            </div>
+            <div className="flex flex-col md:flex-row gap-8 md:gap-10 items-center justify-center w-full max-w-4xl mb-12">
+              <div className="flex flex-col items-center">
+                <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl w-48 h-48 md:w-64 md:h-64 mb-4">
+                  <img src="/will.png" alt="Wil" className="object-cover w-full h-full" />
+                </div>
+                <div className="text-center">
+                  <div className="font-semibold text-xl text-gray-800 mb-2">Wil</div>
+                  <div className="text-gray-600 text-sm max-w-xs">
+                    Data nerd with a big heart who gets genuinely excited about your sleep scores
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl w-48 h-48 md:w-64 md:h-64 mb-4">
+                  <img src="/elli.png" alt="Ellie" className="object-cover w-full h-full" />
+                </div>
+                <div className="text-center">
+                  <div className="font-semibold text-xl text-gray-800 mb-2">Ellie</div>
+                  <div className="text-gray-600 text-sm max-w-xs">
+                    Emotionally brilliant and super smart - somehow knows you need a hug before you do
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+        {/* REAL STORIES SECTION */}
+        <section className="w-full px-4">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-4">
+              <strong>Real People. Real Struggles. Real Support.</strong>
             </h2>
           </div>
-
-          <section className="flex flex-col md:flex-row gap-12 md:gap-20 items-center justify-center w-full max-w-4xl mb-12">
-            <div className="flex flex-col items-center">
-              <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl w-48 h-48 md:w-64 md:h-64 mb-4">
-                <img src="/will.png" alt="Wil" className="object-cover w-full h-full" />
-              </div>
-              <div className="text-center">
-                <div className="font-semibold text-xl text-gray-800 mb-2">Wil</div>
-                <div className="text-gray-600 text-sm max-w-xs">
-                  Data nerd with a big heart who gets genuinely excited about your sleep scores
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl w-48 h-48 md:w-64 md:h-64 mb-4">
-                <img src="/elli.png" alt="Ellie" className="object-cover w-full h-full" />
-              </div>
-              <div className="text-center">
-                <div className="font-semibold text-xl text-gray-800 mb-2">Ellie</div>
-                <div className="text-gray-600 text-sm max-w-xs">
-                  Emotionally brilliant and super smart - somehow knows you need a hug before you do
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <div className="text-center mb-16">
-            <p className="text-2xl text-gray-600 font-medium">
-              Health wisdom from experts, delivered like a friend
-            </p>
-          </div>
-
-          <section className="w-full px-4">
-            <div className="text-center mb-6">
-              <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-4">
-                👉 <strong>Real People. Real Conversations.</strong>
-              </h2>
-              <p className="text-lg text-gray-600 font-medium mb-2">
-                See how Dimension responds in the moments that matter.
-              </p>
-              <p className="text-base text-gray-500 max-w-2xl mx-auto">
-                Click through real profiles to see how Ellie and Wil provide personalized support for different people and situations.
-              </p>
-            </div>
-            <RealStories STORIES={STORIES} useFadeInUpAnimation={useFadeInUpAnimation} />
-          </section>
-
-          {/* Add the new section */}
-          <TiredOfHealthToolsSection />
-        </main>
+          <RealStories />
+        </section>
+        </div>
+      </section>
+      {/* TIRED OF HEALTH TOOLS SECTION */}
+      <div className="w-full">
+        <TiredOfHealthToolsSection />
       </div>
-    </div>
+    </>
   );
 }
