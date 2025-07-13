@@ -1,102 +1,349 @@
 'use client';
 
-import React, { useState } from 'react';
-import ProfileCard from './ProfileCard';
+import React, { useState, useEffect } from 'react';
 
-export default function RealStories() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+type ChatMessage = { from: string; text: string };
+type Story = {
+  key: string;
+  name: string;
+  age: number;
+  descriptor: string;
+  responder: string;
+  responderAvatar: string;
+  chat: ChatMessage[];
+};
 
-  const stories = [
-    {
-      key: 'rachel',
-      name: 'Rachel',
-      age: 39,
-      descriptor: 'Holding everyone together, barely holding herself.'
-    },
-    {
-      key: 'sine', 
-      name: 'Sine',
-      age: 42,
-      descriptor: 'Fiercely independent, quietly burning out.'
-    }
-  ];
+const STORIES: Story[] = [
+  {
+    key: 'rachel',
+    name: 'Rachel',
+    age: 39,
+    descriptor: 'Holding everyone together, barely holding herself.',
+    responder: 'Ellie',
+    responderAvatar: '/elli.png',
+    chat: [
+      { from: 'Rachel', text: "I'm so tired but I can't turn my brain off at night. Even when the kids are finally asleep, I'm lying there thinking about everything I didn't get done." },
+      { from: 'Ellie', text: "That mental load you're carrying is exhausting, Rachel. Your nervous system is stuck in 'on' mode. Let's find a way to help you transition from mom-mode to rest-mode." },
+      { from: 'Rachel', text: "I don't even know how to do that anymore. There's always something." },
+      { from: 'Ellie', text: "We'll start with a 5-minute buffer ritual. Something that signals to your body: 'The day is done, you've done enough.' What's one small thing that used to make you feel calm?" },
+    ],
+  },
+  {
+    key: 'sine',
+    name: 'Sine',
+    age: 42,
+    descriptor: 'Fiercely independent, quietly burning out.',
+    responder: 'Ellie',
+    responderAvatar: '/elli.png',
+    chat: [
+      { from: 'Sine', text: "I hate how I eat when I'm stressed. Yesterday I demolished a bag of chips at 3pm and felt terrible about myself for hours." },
+      { from: 'Ellie', text: "That afternoon crash and emotional eating cycle is so common, Sine. Your body was asking for something - probably energy and comfort. Instead of fighting it, let's understand what you actually needed in that moment." },
+      { from: 'Sine', text: "I know I should eat better, but when I'm overwhelmed, healthy choices feel impossible." },
+      { from: 'Ellie', text: "Let's remove 'should' from this conversation. You're doing the best you can with the energy you have. What if we set up your space so the easier choice is also the nourishing choice?" },
+    ],
+  },
+  {
+    key: 'yara',
+    name: 'Yara',
+    age: 47,
+    descriptor: "Everyone's go-to. Never her own.",
+    responder: 'Ellie',
+    responderAvatar: '/elli.png',
+    chat: [
+      { from: 'Yara', text: "I realized I can't remember the last time someone asked me how I'm doing and actually waited for an answer. Everyone just assumes I'm fine because I handle everything." },
+      { from: 'Ellie', text: "I'm asking now, Yara. How are you really doing? And I'm going to wait for the real answer, not the one you give everyone else." },
+      { from: 'Yara', text: "Honestly? I'm angry. At everyone. But mostly at myself for letting it get this bad." },
+      { from: 'Ellie', text: "That anger is information. It's your inner voice finally speaking up, saying 'I matter too.' You've been taking care of everyone else's needs - what would it look like to advocate for your own?" },
+    ],
+  },
+  {
+    key: 'leo',
+    name: 'Leo',
+    age: 45,
+    descriptor: 'Always performing, rarely processing.',
+    responder: 'Wil',
+    responderAvatar: '/will.png',
+    chat: [
+      { from: 'Leo', text: "My Oura data is brutal this week. HRV down 40%, sleep efficiency tanking. I know what the numbers are telling me, but I don't know how to fix it without changing my whole life." },
+      { from: 'Wil', text: "Those numbers are a clear signal, Leo. Your autonomic nervous system is stuck in fight-or-flight mode. The good news? We don't need to overhaul everything - we need strategic interventions." },
+      { from: 'Leo', text: "I've tried meditation apps, but sitting still for 20 minutes feels impossible when my brain is going 100mph." },
+      { from: 'Wil', text: "Forget traditional meditation. Let's work with your wiring, not against it. Box breathing while you walk to meetings. 90-second coherence sessions between calls. Micro-interventions that fit your rhythm." },
+    ],
+  },
+  {
+    key: 'tariq',
+    name: 'Tariq',
+    age: 63,
+    descriptor: 'Calm exterior, pressure cooker inside.',
+    responder: 'Wil',
+    responderAvatar: '/will.png',
+    chat: [
+      { from: 'Tariq', text: "My wife says I'm always tense, even when I'm supposedly relaxing. I'll be sitting on the couch, but my shoulders are up around my ears and my mind is still running through business problems." },
+      { from: 'Wil', text: "That's your body's way of staying ready for the next crisis, Tariq. After decades of being the one everyone relies on, your nervous system doesn't know how to truly rest. We need to teach it that it's safe to let go." },
+      { from: 'Tariq', text: "I've tried yoga classes, but I feel ridiculous. And I can't seem to stop thinking long enough for it to work." },
+      { from: 'Wil', text: "Forget the classes. Let's start with progressive muscle release while you're doing things you already do. Five minutes of intentional shoulder drops while watching the news. It's practical, private, and effective." },
+    ],
+  },
+];
 
-  const chatMessages = [
-    { from: 'Rachel', text: "I'm so tired but I can't turn my brain off at night." },
-    { from: 'Ellie', text: "That mental load you're carrying is exhausting, Rachel." }
-  ];
+// TypeWriter effect hook
+function useTypewriter(text: string, speed: number = 30) {
+  const [displayText, setDisplayText] = useState('');
+  const [isComplete, setIsComplete] = useState(false);
+
+  useEffect(() => {
+    setDisplayText('');
+    setIsComplete(false);
+    let i = 0;
+    
+    const timer = setInterval(() => {
+      if (i < text.length) {
+        setDisplayText(text.slice(0, i + 1));
+        i++;
+      } else {
+        setIsComplete(true);
+        clearInterval(timer);
+      }
+    }, speed);
+
+    return () => clearInterval(timer);
+  }, [text, speed]);
+
+  return { displayText, isComplete };
+}
+
+function ProfileCard({ story }: { story: Story }) {
+  // Dynamic content functions (same as before)
+  const getHealthChallenges = (key: string) => {
+    const challenges = {
+      rachel: ['Constant fatigue despite 8hrs in bed', 'Light, broken sleep', 'Zero time for herself'],
+      sine: ['Emotional eating cycles', 'Afternoon energy dips', 'Social isolation'],
+      yara: ['Hormonal swings', 'Neck/shoulder pain', 'Low libido'],
+      leo: ['Sleep disruption', 'Over-reliance on stimulants', 'Suppressed emotions'],
+      tariq: ['Joint stiffness', 'Poor sleep hygiene', 'Internalized stress']
+    };
+    return challenges[key as keyof typeof challenges] || challenges.rachel;
+  };
+
+  const getLifeContext = (key: string) => {
+    const context = {
+      rachel: ['Full-time work', 'Two small kids', 'Aging parents'],
+      sine: ['Single mom', 'Freelance creative', 'Always "on"'],
+      yara: ['Part-time teacher', 'Three teens', 'Manages home + eldercare'],
+      leo: ['Executive in tech', 'Two young kids', 'Often traveling'],
+      tariq: ['Manages family business', 'Adult children at home', 'Aging parents in care']
+    };
+    return context[key as keyof typeof context] || context.rachel;
+  };
+
+  const getTechTracking = (key: string) => {
+    const tech = {
+      rachel: '🍎 Apple Watch — wears daily, ignores alerts',
+      sine: '⌚ Garmin — tracks runs, ignores recovery',
+      yara: '🚫 None — overwhelmed by tech',
+      leo: '💍 Oura Ring — obsesses over HRV data',
+      tariq: '📱 Apple Health — basic tracking only'
+    };
+    return tech[key as keyof typeof tech] || tech.rachel;
+  };
+
+  const getEnergyStress = (key: string) => {
+    const stats = {
+      rachel: { energy: '🪫 2/10', stress: '🔥 9/10' },
+      sine: { energy: '⚡️ 4/10', stress: '🔥 8/10' },
+      yara: { energy: '🔋 3/10', stress: '🔥 8/10' },
+      leo: { energy: '🔌 6/10', stress: '🔥 8/10' },
+      tariq: { energy: '💡 5/10', stress: '🔥 7/10' }
+    };
+    return stats[key as keyof typeof stats] || stats.rachel;
+  };
+
+  const getSupport = (key: string) => {
+    const support = {
+      rachel: 'Practical, calming advice — someone who can cut through the noise.',
+      sine: 'A non-judgmental mirror. Tools that fit her rhythm, not fight it.',
+      yara: 'A nudge toward self-priority. Emotional space and daily sanity.',
+      leo: 'Direct, science-backed insight plus reminders to slow the hell down.',
+      tariq: 'A grounded companion — with calm, steady motivation and zero fluff.'
+    };
+    return support[key as keyof typeof support] || support.rachel;
+  };
+
+  const healthChallenges = getHealthChallenges(story.key);
+  const lifeContext = getLifeContext(story.key);
+  const techTracking = getTechTracking(story.key);
+  const energyStress = getEnergyStress(story.key);
+  const supportText = getSupport(story.key);
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
-      <div className="flex items-center justify-center gap-4 mb-6">
-        <button
-          onClick={() => setCurrentIndex((idx) => Math.max(0, idx - 1))}
-          disabled={currentIndex === 0}
-          className={`w-14 h-14 flex items-center justify-center rounded-full border-2 border-gray-400 bg-white shadow-lg disabled:opacity-40 disabled:cursor-not-allowed transition-all`}
-          aria-label="Previous"
-        >
-          {/* SVG left arrow in circle */}
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polyline points="20,8 12,16 20,24" fill="none" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-        <div className="text-lg text-gray-700 font-medium text-center px-2">
-          <span className="underline">Click to see more user conversations</span>
+    <div className="w-[375px] h-[550px] min-h-[550px] max-h-[550px] max-w-[375px] flex flex-col">
+      <div className="bg-gray-100 rounded-2xl shadow-xl border border-gray-200 p-2 flex flex-col w-full h-full">
+        <div className="bg-white/60 backdrop-blur border-b border-gray-200 p-4">
+          <div className="font-bold text-xl text-gray-700 mb-1">
+            {story.name}, {story.age}
+          </div>
+          <div className="italic text-base text-gray-600">
+            {story.descriptor}
+          </div>
         </div>
-        <button
-          onClick={() => setCurrentIndex((idx) => Math.min(stories.length - 1, idx + 1))}
-          disabled={currentIndex === stories.length - 1}
-          className={`w-14 h-14 flex items-center justify-center rounded-full border-2 border-gray-400 bg-white shadow-lg disabled:opacity-40 disabled:cursor-not-allowed transition-all`}
-          aria-label="Next"
-        >
-          {/* SVG right arrow in circle */}
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polyline points="12,8 20,16 12,24" fill="none" stroke="black" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
-      </div>
-      <div className="flex justify-center gap-8">
-        <div className="flex-1 max-w-md min-h-[600px] flex">
-          <ProfileCard story={stories[currentIndex]} />
-        </div>
-        <div className="flex-1 max-w-md min-h-[600px] flex items-stretch">
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-0 flex flex-col items-center w-full min-h-[600px]">
-            {/* Profile image */}
-            <div className="flex flex-col items-center pt-8">
-              <img src="/elli.png" alt="Ellie" className="w-20 h-20 rounded-full border-4 border-white shadow-lg object-cover mb-2" />
-              <div className="font-semibold text-xl text-gray-800">Ellie</div>
-              <div className="text-sm text-gray-500 mb-4">Your empathic wellness companion</div>
-            </div>
-            {/* Chat bubble */}
-            <div className="flex-1 flex flex-col justify-center w-full px-6">
-              <div className="flex items-start">
-                <img src="/elli.png" alt="Ellie" className="w-8 h-8 rounded-full mr-2 mt-1" />
-                <div className="bg-gray-100 text-gray-800 rounded-2xl px-4 py-3 shadow-sm max-w-[80%]">
-                  Hey, I&apos;m Ellie. Here whenever you need me. How are you feeling today?
-                </div>
+        <div className="flex-1 min-h-0 overflow-y-auto">
+          <div className="flex flex-col gap-1 flex-1 min-h-0">
+            <div className="bg-white rounded-lg p-6 border border-gray-200 h-36 flex flex-col justify-center">
+              <h4 className="text-xs font-semibold text-gray-500 uppercase mb-1">Health Challenges</h4>
+              <div className="text-sm text-gray-800">
+                {healthChallenges.map((challenge, idx) => <div key={idx}>• {challenge}</div>)}
               </div>
             </div>
-            {/* Input placeholder */}
-            <div className="w-full px-6 pb-6 pt-2">
-              <input
-                type="text"
-                disabled
-                placeholder="Type a message..."
-                className="w-full rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-gray-500 focus:outline-none shadow-sm"
-              />
+            <div className="bg-white rounded-lg p-6 border border-gray-200 h-36 flex flex-col justify-center">
+              <h4 className="text-xs font-semibold text-gray-500 uppercase mb-1">Life Context</h4>
+              <div className="text-sm text-gray-800">
+                {lifeContext.map((context, idx) => <div key={idx}>• {context}</div>)}
+              </div>
+            </div>
+            <div className="bg-white rounded-lg p-6 border border-gray-200 h-36 flex flex-col justify-center">
+              <h4 className="text-xs font-semibold text-gray-500 uppercase mb-1">Tech & Tracking</h4>
+              <div className="text-sm text-gray-800">
+                {techTracking}
+              </div>
+            </div>
+            <div className="bg-white rounded-lg p-2 border border-gray-200">
+              <h4 className="text-xs font-semibold text-gray-500 uppercase mb-1">Energy & Stress</h4>
+              <div className="text-xs text-gray-800 leading-tight">
+                <div>Energy: {energyStress.energy}</div>
+                <div>Stress: {energyStress.stress}</div>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg p-2 border border-gray-200 w-full flex flex-col overflow-y-auto">
+              <h4 className="text-xs font-semibold text-gray-500 uppercase mb-1">THE RIGHT SUPPORT</h4>
+              <p className="text-xs text-gray-800 leading-tight">{supportText}</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex justify-center mt-6 gap-2">
-        {stories.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentIndex(idx)}
-            className={`w-3 h-3 rounded-full ${idx === currentIndex ? 'bg-blue-600' : 'bg-gray-300'}`}
-          />
+    </div>
+  );
+}
+
+export default function RealStories() {
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+  const [chatMessages, setChatMessages] = useState<{ msg: ChatMessage; isTyping: boolean; isComplete: boolean }[]>([]);
+  const chatRef = React.useRef<HTMLDivElement>(null);
+  
+  // Sequentially add chat bubbles, one at a time, waiting for typewriter effect to finish
+  useEffect(() => {
+    let isActive = true;
+    setChatMessages([]);
+    const story = STORIES[currentStoryIndex];
+
+    const showMessagesSequentially = async () => {
+      for (let i = 0; i < story.chat.length; i++) {
+        if (!isActive) break;
+        setChatMessages(prev => [...prev, { msg: story.chat[i], isTyping: true, isComplete: false }]);
+        // Wait for typewriter effect (estimate: 30ms per character, plus a small buffer)
+        const messageLength = story.chat[i].text.length;
+        await new Promise(res => setTimeout(res, messageLength * 30 + 500));
+      }
+    };
+    showMessagesSequentially();
+    return () => { isActive = false; };
+  }, [currentStoryIndex]);
+
+  // Scroll chat to bottom when chatMessages change
+  useEffect(() => {
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+    }
+  }, [chatMessages]);
+
+  const nextStory = () => setCurrentStoryIndex((currentStoryIndex + 1) % STORIES.length);
+  const prevStory = () => setCurrentStoryIndex((currentStoryIndex - 1 + STORIES.length) % STORIES.length);
+
+  return (
+    <div className="w-full max-w-6xl mx-auto">
+      {/* Navigation */}
+      <div className="flex items-center justify-center mb-6 gap-3">
+        <button onClick={prevStory} className="bg-white rounded-full p-2 shadow hover:shadow-lg border border-gray-200 transition-all">
+          <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <span className="text-base md:text-lg font-medium text-gray-700 px-4 py-2 rounded-full">
+          Click to see more conversations
+        </span>
+        <button onClick={nextStory} className="bg-white rounded-full p-2 shadow hover:shadow-lg border border-gray-200 transition-all">
+          <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex flex-col lg:flex-row items-start justify-center gap-8 w-full">
+        <div className="flex-shrink-0">
+          <ProfileCard story={STORIES[currentStoryIndex]} />
+        </div>
+        
+        <div className="w-[375px] h-[550px] min-h-[550px] max-h-[550px] max-w-[375px] flex flex-col">
+          <div className="bg-white rounded-3xl shadow-xl border border-gray-200 p-4 flex flex-col w-full h-full">
+            <div className="flex items-center mb-4">
+              <img src={STORIES[currentStoryIndex].responderAvatar} alt={STORIES[currentStoryIndex].responder} className="w-12 h-12 rounded-full border-2 border-white shadow-md mr-4" />
+              <div>
+                <div className="font-semibold text-lg text-gray-900">{STORIES[currentStoryIndex].name}'s conversation with {STORIES[currentStoryIndex].responder}</div>
+                <div className="text-gray-400 text-sm">Live conversation preview</div>
+              </div>
+            </div>
+            
+            <div className="space-y-3 overflow-y-auto flex-1" ref={chatRef}>
+              {chatMessages.map((item, i) => (
+                <ChatBubble 
+                  key={i} 
+                  message={item.msg} 
+                  responder={STORIES[currentStoryIndex].responder}
+                  responderAvatar={STORIES[currentStoryIndex].responderAvatar}
+                />
+              ))}
+            </div>
+            
+
+          </div>
+        </div>
+      </div>
+
+      {/* Dots Navigation */}
+      <div className="flex justify-center mt-8 gap-2">
+        {STORIES.map((_, idx) => (
+          <button key={idx} onClick={() => setCurrentStoryIndex(idx)} className={`w-3 h-3 rounded-full transition-colors ${idx === currentStoryIndex ? 'bg-indigo-600' : 'bg-gray-300'}`} />
         ))}
       </div>
+    </div>
+  );
+}
+
+// Chat Bubble with Typewriter Effect
+function ChatBubble({ message, responder, responderAvatar }: { message: ChatMessage; responder: string; responderAvatar: string }) {
+  const { displayText, isComplete } = useTypewriter(message.text, 30);
+
+  return (
+    <div className={`flex ${message.from === responder ? 'justify-start' : 'justify-end'}`}>
+      {message.from === responder ? (
+        <div className="flex items-start gap-3 max-w-[90%]">
+          <img src={responderAvatar} alt={responder} className="w-8 h-8 rounded-full flex-shrink-0 mt-1" />
+          <div className="bg-gray-100 text-gray-800 rounded-2xl px-4 py-3 border border-gray-200">
+            <div className="text-xs font-medium mb-1 text-gray-600">{message.from}</div>
+            <div className="text-sm leading-relaxed text-gray-800">
+              {displayText}
+              {!isComplete && <span className="animate-pulse">|</span>}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="bg-gray-900 text-white rounded-2xl px-4 py-3 max-w-[90%] shadow-sm">
+          <div className="text-sm leading-relaxed text-white">
+            {displayText}
+            {!isComplete && <span className="animate-pulse">|</span>}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

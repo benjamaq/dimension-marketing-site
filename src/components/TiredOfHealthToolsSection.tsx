@@ -19,7 +19,7 @@ export default function TiredOfHealthToolsSection() {
           {/* Main Title */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-8">
-              Tired of health tools that don&apos;t actually help?
+              You&apos;ve tried tracking. You&apos;ve tried apps. But you&apos;re still exhausted
             </h2>
           </div>
 
