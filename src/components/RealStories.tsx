@@ -259,7 +259,7 @@ export default function RealStories() {
   const prevStory = () => setCurrentStoryIndex((currentStoryIndex - 1 + STORIES.length) % STORIES.length);
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <div className="w-full max-w-6xl mx-auto mb-20">
       {/* Navigation */}
       <div className="flex items-center justify-center mb-6 gap-3">
         <button onClick={prevStory} className="bg-white rounded-full p-2 shadow hover:shadow-lg border border-gray-200 transition-all">
@@ -309,10 +309,11 @@ export default function RealStories() {
         </div>
       </div>
 
-      {/* Dots Navigation */}
-      <div className="flex justify-center mt-8 gap-2">
+      {/* Dots Navigation INSIDE card row for better section alignment */}
+      <div className="flex justify-center mt-8 mb-8 gap-2">
         {STORIES.map((_, idx) => (
-          <button key={idx} onClick={() => setCurrentStoryIndex(idx)} className={`w-3 h-3 rounded-full transition-colors ${idx === currentStoryIndex ? 'bg-indigo-600' : 'bg-gray-300'}`} />
+          <button key={idx} onClick={() => setCurrentStoryIndex(idx)} className={`w-3 h-3 rounded-full transition-colors ${idx === currentStoryIndex ? 'bg-black' : 'bg-gray-300'}`}
+            aria-label={`Go to story ${idx + 1}`} />
         ))}
       </div>
     </div>
