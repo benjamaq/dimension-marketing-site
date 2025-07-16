@@ -135,7 +135,7 @@ export default function Home() {
     <>
       {/* HERO + REAL STORIES SECTIONS WITH SHARED BACKGROUND */}
       <section
-        className="relative w-full"
+        className="relative w-full pb-4"
         style={{
           backgroundImage: "url('/largebg.png')",
           backgroundSize: 'cover',
@@ -167,7 +167,7 @@ export default function Home() {
               <div className="text-2xl md:text-3xl text-gray-800 text-center font-light mb-2">
                 Not Anymore
               </div>
-              <hr className="mx-auto w-16 border-t-2 border-gray-300 mb-8" />
+              
             </div>
             <div className="w-full flex flex-col items-center mb-8">
               <h2 className="text-4xl md:text-5xl font-light text-center text-gray-800 tracking-tight mb-2">

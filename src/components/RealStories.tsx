@@ -310,7 +310,7 @@ export default function RealStories() {
       </div>
 
       {/* Dots Navigation INSIDE card row for better section alignment */}
-      <div className="flex justify-center mt-8 mb-8 gap-2">
+      <div className="flex justify-center mt-8 mb-20 gap-2">
         {STORIES.map((_, idx) => (
           <button key={idx} onClick={() => setCurrentStoryIndex(idx)} className={`w-3 h-3 rounded-full transition-colors ${idx === currentStoryIndex ? 'bg-black' : 'bg-gray-300'}`}
             aria-label={`Go to story ${idx + 1}`} />
