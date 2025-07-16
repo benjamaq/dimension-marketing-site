@@ -201,6 +201,12 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            {/* CTA SECTION */}
+            <div className="w-full flex flex-col items-center my-8">
+              <a href="#get-started" className="inline-block px-8 py-3 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg">
+                Get Started Now
+              </a>
+            </div>
           </main>
         </div>
         {/* REAL STORIES SECTION */}

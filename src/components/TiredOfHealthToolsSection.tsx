@@ -18,7 +18,7 @@ export default function TiredOfHealthToolsSection() {
         <div className="max-w-6xl mx-auto">
           {/* Main Title */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-8">
+            <h2 className="text-2xl md:text-3xl font-light text-gray-800 mb-8">
               You&apos;ve tried tracking. You&apos;ve tried apps. But you&apos;re still exhausted
             </h2>
           </div>
@@ -34,14 +34,20 @@ export default function TiredOfHealthToolsSection() {
               </div>
               {/* Right: Messaging */}
               <div className="flex flex-col justify-center px-8 py-6 w-full md:w-1/2">
-                <h3 className="text-2xl md:text-2xl font-bold text-gray-900 mb-2">You’ve tried tracking. You’ve tried apps. But you’re still exhausted.</h3>
-                <div className="text-gray-500 italic mb-2">You were doing your best.<br/>But here’s the truth:</div>
-                <div className="text-xl font-bold text-gray-800 mb-4">None of it really helped when life got hard.</div>
-                <div className="text-gray-600 mb-4">Because most tools track symptoms — not what’s behind them.</div>
-                <hr className="my-4 border-gray-200" />
-                <div className="font-semibold text-gray-900 mb-2">Dimension is different.</div>
-                <div className="text-gray-800 mb-4">It listens. It learns. It helps you adjust in the moments that matter. Not more noise. Real support.</div>
-                <div className="bg-white/70 rounded-xl border border-gray-100 px-4 py-3 text-gray-700 text-sm mb-4">“It’s the first thing that didn’t make me feel broken.” <span className="text-gray-400">— Early user</span></div>
+                
+                <div className="text-base text-gray-700 mb-4">
+                  You gave it a shot.<br />
+                  The apps. The programs. The gadgets.<br />
+                  But when life got messy, they didn’t really help.
+                </div>
+                <p className="text-lg text-gray-700 mb-6">
+                  Because most tools track symptoms — not what’s behind them.
+                </p>
+                <h4 className="text-xl font-bold text-gray-900 mb-2">Dimension is different.</h4>
+                <p className="text-lg text-gray-700 mb-6">
+                  It doesn’t just track. It listens.<br />
+                  It gets to know you, and helps you respond in real moments — with calm, clarity, and kindness.
+                </p>
                 <button className="mt-2 px-6 py-3 rounded-full bg-gray-900 text-white font-semibold shadow hover:bg-black transition">Try Dimension — Free to Start</button>
               </div>
             </div>
