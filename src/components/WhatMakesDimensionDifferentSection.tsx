@@ -39,7 +39,7 @@ const FEATURES = [
     description: (
       <>
         <b>Not internet noise. Real health intelligence.</b> While other AIs pull from the web, Dimension is grounded in research from the most trusted thinkers in longevity, metabolic health, recovery, and performance.<br />
-        <span className="font-semibold text-gray-700">You won’t see their names here — but you’ll feel their influence in every suggestion.</span>
+        
       </>
     ),
   },
@@ -81,6 +81,15 @@ export default function WhatMakesDimensionDifferentSection() {
                     </div>
                   </div>
                 ))}
+                {/* CTA Button */}
+                <div className="mt-6 flex justify-center md:justify-start">
+                  <a
+                    href="#get-started"
+                    className="inline-block px-8 py-3 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg"
+                  >
+                    Get Started with Dimension
+                  </a>
+                </div>
               </div>
             </div>
           </div>
