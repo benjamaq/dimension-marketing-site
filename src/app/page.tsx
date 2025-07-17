@@ -4,6 +4,8 @@ import React, { useEffect } from 'react';
 import RealStories from '@/components/RealStories';
 import TiredOfHealthToolsSection from '@/components/TiredOfHealthToolsSection';
 import WhatMakesDimensionDifferentSection from '@/components/WhatMakesDimensionDifferentSection';
+import HowItWorksSection from '@/components/HowItWorksSection';
+import PricingSection from '@/components/PricingSection';
 
 type ChatMessage = { from: string; text: string };
 type Story = {
@@ -201,6 +203,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            <div className="w-full flex flex-col items-center mb-8">
+              <h2 className="text-xl md:text-2xl font-light text-center text-gray-800 mb-4">
+                AI-powered health coaching that listens, remembers, and supports you—like a real friend.
+              </h2>
+            </div>
             {/* CTA SECTION */}
             <div className="w-full flex flex-col items-center my-8">
               <a href="#get-started" className="inline-block px-8 py-3 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg">
@@ -228,6 +235,10 @@ export default function Home() {
       <div className="w-full">
         <WhatMakesDimensionDifferentSection />
       </div>
+      {/* HOW IT WORKS SECTION */}
+      <HowItWorksSection />
+      {/* PRICING SECTION */}
+      <PricingSection />
     </>
   );
 }

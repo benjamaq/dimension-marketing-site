@@ -62,58 +62,58 @@ export default function TiredOfHealthToolsSection() {
             </h3>
             
             <div className="grid md:grid-cols-3 gap-8">
-              {/* Example 1 */}
+              {/* CARD 1: Sleep */}
               <div className="bg-gradient-to-br from-gray-100 via-white to-gray-200 rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                 <div className="p-6">
                   <div className="mb-6">
                     <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">❌ Old Tools</h4>
                     <div className="bg-white rounded-lg p-4 border border-gray-200">
-                      <p className="text-gray-800 font-medium">&quot;Sleep score: 71&quot;</p>
+                      <p className="text-gray-800 font-medium">“Sleep score: 71”</p>
                       <p className="text-gray-500 text-sm mt-2">→ no idea what to do next</p>
                     </div>
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">✅ With Dimension</h4>
                     <div className="bg-gradient-to-bl from-gray-50 via-white to-gray-100 rounded-xl p-4 border border-gray-100">
-                      <p className="text-gray-900 font-medium">&quot;Let&apos;s try a no-screen wind-down tonight. I&apos;ll check in tomorrow.&quot;</p>
+                      <p className="text-gray-900 font-medium">“You were up later than usual, and stress was still high at bedtime — that’s likely what dragged your sleep down.<br />Let’s try a no-screen wind-down tonight, and I’ll check in tomorrow.”</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Example 2 */}
+              {/* CARD 2: Steps / Activity */}
               <div className="bg-gradient-to-br from-gray-100 via-white to-gray-200 rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                 <div className="p-6">
                   <div className="mb-6">
                     <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">❌ Old Tools</h4>
                     <div className="bg-white rounded-lg p-4 border border-gray-200">
-                      <p className="text-gray-800 font-medium">&quot;You walked 3,428 steps&quot;</p>
+                      <p className="text-gray-800 font-medium">“You walked 3,428 steps”</p>
                       <p className="text-gray-500 text-sm mt-2">→ shrug</p>
                     </div>
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">✅ With Dimension</h4>
                     <div className="bg-gradient-to-bl from-gray-50 via-white to-gray-100 rounded-xl p-4 border border-gray-100">
-                      <p className="text-gray-900 font-medium">&quot;Nice walk. Want to add some gentle stretching to help with your back?&quot;</p>
+                      <p className="text-gray-900 font-medium">“Nice walk — but your energy dipped in the afternoon, and movement usually helps.<br />Want to add 10 minutes of gentle stretching tomorrow to lift your mood and ease your back?”</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Example 3 */}
+              {/* CARD 3: Heart Rate / Stress */}
               <div className="bg-gradient-to-br from-gray-100 via-white to-gray-200 rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
                 <div className="p-6">
                   <div className="mb-6">
                     <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">❌ Old Tools</h4>
                     <div className="bg-white rounded-lg p-4 border border-gray-200">
                       <p className="text-gray-800 font-medium">“Heart rate elevated”</p>
-                      <p className="text-gray-500 text-sm mt-2">→ No clue why</p>
+                      <p className="text-gray-500 text-sm mt-2">→ no clue why</p>
                     </div>
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">✅ With Dimension</h4>
                     <div className="bg-gradient-to-bl from-gray-50 via-white to-gray-100 rounded-xl p-4 border border-gray-100">
-                      <p className="text-gray-900 font-medium">“Stress spike around 3PM. Could be the afternoon crash — want help building a calm buffer?”</p>
+                      <p className="text-gray-900 font-medium">“Stress spiked around 3PM — right after that calendar notification.<br />Could be the afternoon crash or tension building up. Want help building a calm buffer?”</p>
                     </div>
                   </div>
                 </div>
