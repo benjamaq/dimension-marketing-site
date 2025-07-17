@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import RealStories from '@/components/RealStories';
 import TiredOfHealthToolsSection from '@/components/TiredOfHealthToolsSection';
+import WhatMakesDimensionDifferentSection from '@/components/WhatMakesDimensionDifferentSection';
 
 type ChatMessage = { from: string; text: string };
 type Story = {
@@ -143,7 +144,7 @@ export default function Home() {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        {/* White overlay with 15% opacity */}
+        <WhatMakesDimensionDifferentSection />
         <div style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',background:'rgba(255,255,255,0.6)',zIndex:1,pointerEvents:'none'}} />
         <div style={{position:'relative',zIndex:2}}>
 
