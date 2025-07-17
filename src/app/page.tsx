@@ -144,7 +144,6 @@ export default function Home() {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <WhatMakesDimensionDifferentSection />
         <div style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',background:'rgba(255,255,255,0.6)',zIndex:1,pointerEvents:'none'}} />
         <div style={{position:'relative',zIndex:2}}>
 
@@ -224,6 +223,10 @@ export default function Home() {
       {/* TIRED OF HEALTH TOOLS SECTION */}
       <div className="w-full">
         <TiredOfHealthToolsSection />
+      </div>
+      {/* WHAT MAKES DIMENSION DIFFERENT SECTION */}
+      <div className="w-full">
+        <WhatMakesDimensionDifferentSection />
       </div>
     </>
   );
