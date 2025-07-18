@@ -8,7 +8,7 @@ const STEPS = [
     description: (
       <>
         You pick the voice that suits your vibe.<br />
-        <b>Wil or Ellie—your AI coach—joins you with personality, warmth, and a sharp eye for patterns.</b> Choosing your coach helps the experience feel human, personal, and yours from the beginning.
+        <b>Wil or Elli—your AI coach—joins you with personality, warmth, and a sharp eye for patterns.</b> Choosing your coach helps the experience feel human, personal, and yours from the beginning.
       </>
     ),
   },
@@ -18,7 +18,7 @@ const STEPS = [
     description: (
       <>
         It’s not a questionnaire. It’s a conversation.<br />
-        <b>Will or Ellie chats with you to understand your world:</b> your habits, sleep, stress, energy, goals, and what’s been falling apart lately. No forms. No pressure. Just a natural, intuitive way to get support that actually fits.
+        <b>Wil or Elli chats with you to understand your world:</b> your habits, sleep, stress, energy, goals, and what’s been falling apart lately. No forms. No pressure. Just a natural, intuitive way to get support that actually fits.
       </>
     ),
   },

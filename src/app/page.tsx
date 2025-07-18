@@ -32,16 +32,16 @@ const STORIES: Story[] = [
     descriptor: 'Holding everyone together, barely holding herself.',
     image: '/rachel.jpg',
     story: `Overwhelmed, guilty for snapping at the kids, too wired to sleep but too tired to think.`,
-    responder: 'Ellie',
+    responder: 'Elli',
     responderAvatar: '/elli.png',
     buttonText: 'View Chat',
     cardColor: 'from-gray-100 to-white',
     accentColor: 'bg-gray-600',
     chat: [
       { from: 'Rachel', text: "I'm so tired but I can&apos;t turn my brain off at night. Even when the kids are finally asleep, I'm lying there thinking about everything I didn&apos;t get done." },
-      { from: 'Ellie', text: "That mental load you&apos;re carrying is exhausting, Rachel. Your nervous system is stuck in &apos;on&apos; mode. Let&apos;s find a way to help you transition from mom-mode to rest-mode." },
+      { from: 'Elli', text: "That mental load you&apos;re carrying is exhausting, Rachel. Your nervous system is stuck in &apos;on&apos; mode. Let&apos;s find a way to help you transition from mom-mode to rest-mode." },
       { from: 'Rachel', text: "I don&apos;t even know how to do that anymore. There&apos;s always something." },
-      { from: 'Ellie', text: "We&apos;ll start with a 5-minute buffer ritual. Something that signals to your body: &apos;The day is done, you&apos;ve done enough.&apos; What&apos;s one small thing that used to make you feel calm?" },
+      { from: 'Elli', text: "We&apos;ll start with a 5-minute buffer ritual. Something that signals to your body: &apos;The day is done, you&apos;ve done enough.&apos; What&apos;s one small thing that used to make you feel calm?" },
     ],
   },
   {
@@ -51,16 +51,16 @@ const STORIES: Story[] = [
     descriptor: 'Fiercely independent, quietly burning out.',
     image: '/sine.jpg',
     story: `Losing control — wired all day, crashes at night.`,
-    responder: 'Ellie',
+    responder: 'Elli',
     responderAvatar: '/elli.png',
     buttonText: 'View Chat',
     cardColor: 'from-white to-gray-100',
     accentColor: 'bg-gray-700',
     chat: [
       { from: 'Sine', text: "I hate how I eat when I'm stressed. Yesterday I demolished a bag of chips at 3pm and felt terrible about myself for hours." },
-      { from: 'Ellie', text: "That afternoon crash and emotional eating cycle is so common, Sine. Your body was asking for something - probably energy and comfort. Instead of fighting it, let's understand what you actually needed in that moment." },
+      { from: 'Elli', text: "That afternoon crash and emotional eating cycle is so common, Sine. Your body was asking for something - probably energy and comfort. Instead of fighting it, let's understand what you actually needed in that moment." },
       { from: 'Sine', text: "I know I should eat better, but when I'm overwhelmed, healthy choices feel impossible." },
-      { from: 'Ellie', text: "Let's remove &apos;should&apos; from this conversation. You're doing the best you can with the energy you have. What if we set up your space so the easier choice is also the nourishing choice?" },
+      { from: 'Elli', text: "Let's remove &apos;should&apos; from this conversation. You're doing the best you can with the energy you have. What if we set up your space so the easier choice is also the nourishing choice?" },
     ],
   },
   {
@@ -70,16 +70,16 @@ const STORIES: Story[] = [
     descriptor: "Everyone&apos;s go-to. Never her own.",
     image: '/yara.jpg',
     story: `Emotionally numb, physically drained, quietly resentful.`,
-    responder: 'Ellie',
+    responder: 'Elli',
     responderAvatar: '/elli.png',
     buttonText: 'View Chat',
     cardColor: 'from-gray-50 to-white',
     accentColor: 'bg-gray-800',
     chat: [
       { from: 'Yara', text: "I realized I can&apos;t remember the last time someone asked me how I'm doing and actually waited for an answer. Everyone just assumes I'm fine because I handle everything." },
-      { from: 'Ellie', text: "I'm asking now, Yara. How are you really doing? And I'm going to wait for the real answer, not the one you give everyone else." },
+      { from: 'Elli', text: "I'm asking now, Yara. How are you really doing? And I'm going to wait for the real answer, not the one you give everyone else." },
       { from: 'Yara', text: "Honestly? I'm angry. At everyone. But mostly at myself for letting it get this bad." },
-      { from: 'Ellie', text: "That anger is information. It&apos;s your inner voice finally speaking up, saying &apos;I matter too.&apos; You've been taking care of everyone else's needs - what would it look like to advocate for your own?" },
+      { from: 'Elli', text: "That anger is information. It&apos;s your inner voice finally speaking up, saying &apos;I matter too.&apos; You've been taking care of everyone else's needs - what would it look like to advocate for your own?" },
     ],
   },
   {
@@ -157,10 +157,7 @@ export default function Home() {
               <img src="/logo.png" alt="DIMENSION Logo" width="40" height="40" className="mr-3" />
               <span className="font-bold text-xl tracking-wide text-gray-900">DIMENSION</span>
             </div>
-            <nav className="flex gap-10 text-base font-light text-gray-700">
-              <a href="#meet" className="hover:text-gray-900 transition-colors">Meet Them</a>
-              <a href="#get-started" className="hover:text-gray-900 transition-colors">Get Started</a>
-            </nav>
+
           </header>
           <main className="flex flex-col items-center justify-center flex-1 w-full px-4 pt-10 pb-16">
             <div className="flex flex-col items-center justify-center w-full mt-2 mb-8">
@@ -194,10 +191,10 @@ export default function Home() {
               </div>
               <div className="flex flex-col items-center">
                 <div className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl w-48 h-48 md:w-64 md:h-64 mb-4">
-                  <img src="/elli.png" alt="Ellie" className="object-cover w-full h-full" />
+                  <img src="/elli.png" alt="Elli" className="object-cover w-full h-full" />
                 </div>
                 <div className="text-center">
-                  <div className="font-semibold text-xl text-gray-800 mb-2">Ellie</div>
+                  <div className="font-semibold text-xl text-gray-800 mb-2">Elli</div>
                   <div className="text-gray-600 text-sm max-w-xs">
                     Emotionally brilliant and super smart - somehow knows you need a hug before you do
                   </div>
