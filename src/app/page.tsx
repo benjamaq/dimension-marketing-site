@@ -6,6 +6,7 @@ import TiredOfHealthToolsSection from '@/components/TiredOfHealthToolsSection';
 import WhatMakesDimensionDifferentSection from '@/components/WhatMakesDimensionDifferentSection';
 import HowItWorksSection from '@/components/HowItWorksSection';
 import PricingSection from '@/components/PricingSection';
+import PrivacyAssurance from '@/components/PrivacyAssurance';
 
 type ChatMessage = { from: string; text: string };
 type Story = {
@@ -239,6 +240,8 @@ export default function Home() {
       <HowItWorksSection />
       {/* PRICING SECTION */}
       <PricingSection />
+      {/* PRIVACY ASSURANCE */}
+      <PrivacyAssurance />
     </>
   );
 }
