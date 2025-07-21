@@ -14,8 +14,24 @@ type Story = {
 };
 
 const STORIES: Story[] = [
+  // Rachel
   {
     key: 'rachel',
+    name: 'Rachel',
+    age: 39,
+    descriptor: 'Holding everyone together, barely holding herself.',
+    responder: 'Ellie',
+    responderAvatar: '/elli.png',
+    chat: [
+      { from: 'Rachel', text: "I'm so tired but I can't turn my brain off at night. Even when the kids are finally asleep, I'm lying there thinking about everything I didn't get done." },
+      { from: 'Ellie', text: "That mental load you're carrying is exhausting, Rachel. Your nervous system is stuck in 'on' mode. Let's find a way to help you transition from mom-mode to rest-mode." },
+      { from: 'Rachel', text: "I don't even know how to do that anymore. There's always something." },
+      { from: 'Ellie', text: "We'll start with a 5-minute buffer ritual. Something that signals to your body: 'The day is done, you've done enough.' What's one small thing that used to make you feel calm?" },
+    ],
+  },
+  // Jenna
+  {
+    key: 'jenna',
     name: 'Jenna',
     age: 32,
     descriptor: 'Training harder but feeling slower, race in 4 weeks.',
@@ -30,10 +46,130 @@ const STORIES: Story[] = [
       { from: 'Elli', text: "Smart call. Let’s keep your momentum—but make it sustainable. You’ve got this. 🏁" },
     ],
   },
+  // Yara
+  {
+    key: 'yara',
+    name: 'Yara',
+    age: 47,
+    descriptor: "Everyone's go-to. Never her own.",
+    responder: 'Ellie',
+    responderAvatar: '/elli.png',
+    chat: [
+      { from: 'Yara', text: "I realized I can't remember the last time someone asked me how I'm doing and actually waited for an answer. Everyone just assumes I'm fine because I handle everything." },
+      { from: 'Ellie', text: "I'm asking now, Yara. How are you really doing? And I'm going to wait for the real answer, not the one you give everyone else." },
+      { from: 'Yara', text: "Honestly? I'm angry. At everyone. But mostly at myself for letting it get this bad." },
+      { from: 'Ellie', text: "That anger is information. It's your inner voice finally speaking up, saying 'I matter too.' You've been taking care of everyone else's needs - what would it look like to advocate for your own?" },
+    ],
+  },
+  // Tariq
+  {
+    key: 'tariq',
+    name: 'Tariq',
+    age: 63,
+    descriptor: 'Calm exterior, pressure cooker inside.',
+    responder: 'Wil',
+    responderAvatar: '/will.png',
+    chat: [
+      { from: 'Tariq', text: "My wife says I'm always tense, even when I'm supposedly relaxing. I'll be sitting on the couch, but my shoulders are up around my ears and my mind is still running through business problems." },
+      { from: 'Wil', text: "That's your body's way of staying ready for the next crisis, Tariq. After decades of being the one everyone relies on, your nervous system doesn't know how to truly rest. We need to teach it that it's safe to let go." },
+      { from: 'Tariq', text: "I've tried yoga classes, but I feel ridiculous. And I can't seem to stop thinking long enough for it to work." },
+      { from: 'Wil', text: "Forget the classes. Let's start with progressive muscle release while you're doing things you already do. Five minutes of intentional shoulder drops while watching the news. It's practical, private, and effective." },
+    ],
+  },
+  // Sine
+  {
+    key: 'sine',
+    name: 'Sine',
+    age: 42,
+    descriptor: 'Fiercely independent, quietly burning out.',
+    responder: 'Ellie',
+    responderAvatar: '/elli.png',
+    chat: [
+      { from: 'Sine', text: "I hate how I eat when I'm stressed. Yesterday I demolished a bag of chips at 3pm and felt terrible about myself for hours." },
+      { from: 'Ellie', text: "That afternoon crash and emotional eating cycle is so common, Sine. Your body was asking for something - probably energy and comfort. Instead of fighting it, let's understand what you actually needed in that moment." },
+      { from: 'Sine', text: "I know I should eat better, but when I'm overwhelmed, healthy choices feel impossible." },
+      { from: 'Ellie', text: "Let's remove 'should' from this conversation. You're doing the best you can with the energy you have. What if we set up your space so the easier choice is also the nourishing choice?" },
+    ],
+  },
+  // Leo
+  {
+    key: 'leo',
+    name: 'Leo',
+    age: 45,
+    descriptor: 'Always performing, rarely processing.',
+    responder: 'Wil',
+    responderAvatar: '/will.png',
+    chat: [
+      { from: 'Leo', text: "My Oura data is brutal this week. HRV down 40%, sleep efficiency tanking. I know what the numbers are telling me, but I don't know how to fix it without changing my whole life." },
+      { from: 'Wil', text: "Those numbers are a clear signal, Leo. Your autonomic nervous system is stuck in fight-or-flight mode. The good news? We don't need to overhaul everything - we need strategic interventions." },
+      { from: 'Leo', text: "I've tried meditation apps, but sitting still for 20 minutes feels impossible when my brain is going 100mph." },
+      { from: 'Wil', text: "Forget traditional meditation. Let's work with your wiring, not against it. Box breathing while you walk to meetings. 90-second coherence sessions between calls. Micro-interventions that fit your rhythm." },
+    ],
+  },
+  // Marcus
   {
     key: 'marcus',
     name: 'Marcus',
     age: 28,
+    descriptor: 'Feeling incredible on peptides, optimizing without overtraining.',
+    responder: 'Wil',
+    responderAvatar: '/will.png',
+    chat: [
+      { from: 'Marcus', text: "So I started BPC-157 and Ipamorelin last week… and I feel incredible. Crushed squats, hit a PR, barely sore today. Is that normal—or am I pushing too hard?" },
+      { from: 'Wil', text: "That’s a real and pretty common response, Marcus—especially with that combo. BPC-157 helps reduce inflammation and speeds up tissue repair, while Ipamorelin boosts growth hormone release, improving sleep, recovery, and muscle performance.\n\nBut Wil would say: don’t confuse rapid recovery with limitless capacity. Your nervous system, tendons, and connective tissue still need to catch up." },
+      { from: 'Marcus', text: "That’s what I was thinking. I feel like I could double my sets right now." },
+      { from: 'Wil', text: "Totally understandable—but Wil’s approach is to channel that energy, not burn it. Here's what he recommends:\n\n- Maintain intensity, but don’t increase volume this week\n- Focus on perfect reps, not piling on more sets\n- Watch for signs like disrupted sleep, irritability, or grip strength drop-offs\n\nWould you like me to adjust your program to ride this wave intelligently?" },
+      { from: 'Marcus', text: "Yeah, do it. I don’t want to waste this window—but I also don’t want to crash." },
+      { from: 'Wil', text: "Exactly. You’re not chasing a moment—you’re building a foundation. Let’s make this next phase your strongest yet. 🔥" },
+    ],
+  },
+];
+    key: 'sine',
+    name: 'Sine',
+    age: 42,
+    descriptor: 'Fiercely independent, quietly burning out.',
+    responder: 'Ellie',
+    responderAvatar: '/elli.png',
+    chat: [
+      { from: 'Sine', text: "I hate how I eat when I'm stressed. Yesterday I demolished a bag of chips at 3pm and felt terrible about myself for hours." },
+      { from: 'Ellie', text: "That afternoon crash and emotional eating cycle is so common, Sine. Your body was asking for something - probably energy and comfort. Instead of fighting it, let's understand what you actually needed in that moment." },
+      { from: 'Sine', text: "I know I should eat better, but when I'm overwhelmed, healthy choices feel impossible." },
+      { from: 'Ellie', text: "Let's remove 'should' from this conversation. You're doing the best you can with the energy you have. What if we set up your space so the easier choice is also the nourishing choice?" },
+    ],
+  },
+  // Leo
+  {
+    key: 'leo',
+    name: 'Leo',
+    age: 45,
+    descriptor: 'Always performing, rarely processing.',
+    responder: 'Wil',
+    responderAvatar: '/will.png',
+    chat: [
+      { from: 'Leo', text: "My Oura data is brutal this week. HRV down 40%, sleep efficiency tanking. I know what the numbers are telling me, but I don't know how to fix it without changing my whole life." },
+      { from: 'Wil', text: "Those numbers are a clear signal, Leo. Your autonomic nervous system is stuck in fight-or-flight mode. The good news? We don't need to overhaul everything - we need strategic interventions." },
+      { from: 'Leo', text: "I've tried meditation apps, but sitting still for 20 minutes feels impossible when my brain is going 100mph." },
+      { from: 'Wil', text: "Forget traditional meditation. Let's work with your wiring, not against it. Box breathing while you walk to meetings. 90-second coherence sessions between calls. Micro-interventions that fit your rhythm." },
+    ],
+  },
+  // Marcus
+  {
+    key: 'marcus',
+    name: 'Marcus',
+    age: 28,
+    descriptor: 'Feeling incredible on peptides, optimizing without overtraining.',
+    responder: 'Wil',
+    responderAvatar: '/will.png',
+    chat: [
+      { from: 'Marcus', text: "So I started BPC-157 and Ipamorelin last week… and I feel incredible. Crushed squats, hit a PR, barely sore today. Is that normal—or am I pushing too hard?" },
+      { from: 'Wil', text: "That’s a real and pretty common response, Marcus—especially with that combo. BPC-157 helps reduce inflammation and speeds up tissue repair, while Ipamorelin boosts growth hormone release, improving sleep, recovery, and muscle performance.\n\nBut Wil would say: don’t confuse rapid recovery with limitless capacity. Your nervous system, tendons, and connective tissue still need to catch up." },
+      { from: 'Marcus', text: "That’s what I was thinking. I feel like I could double my sets right now." },
+      { from: 'Wil', text: "Totally understandable—but Wil’s approach is to channel that energy, not burn it. Here's what he recommends:\n\n- Maintain intensity, but don’t increase volume this week\n- Focus on perfect reps, not piling on more sets\n- Watch for signs like disrupted sleep, irritability, or grip strength drop-offs\n\nWould you like me to adjust your program to ride this wave intelligently?" },
+      { from: 'Marcus', text: "Yeah, do it. I don’t want to waste this window—but I also don’t want to crash." },
+      { from: 'Wil', text: "Exactly. You’re not chasing a moment—you’re building a foundation. Let’s make this next phase your strongest yet. 🔥" },
+    ],
+  },
+
     descriptor: 'Feeling incredible on peptides, optimizing without overtraining.',
     responder: 'Wil',
     responderAvatar: '/will.png',
