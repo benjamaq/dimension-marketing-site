@@ -85,6 +85,8 @@ export default function WhatMakesDimensionDifferentSection() {
                 <div className="mt-6 flex justify-center md:justify-start">
                   <a
                     href="https://app.trydimension.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-block px-8 py-3 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg"
                   >
                     Get Started with Dimension
