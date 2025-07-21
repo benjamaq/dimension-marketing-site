@@ -50,7 +50,7 @@ export default function TiredOfHealthToolsSection() {
                   It doesn’t just track. It listens.<br />
                   It gets to know you, and helps you respond in real moments — with calm, clarity, and kindness.
                 </p>
-                <button className="mt-2 px-6 py-3 rounded-full bg-gray-900 text-white font-semibold shadow hover:bg-black transition">Get Started with Dimension</button>
+                <a href="https://app.trydimension.com" className="mt-2 px-6 py-3 rounded-full bg-gray-900 text-white font-semibold shadow hover:bg-black transition">Get Started with Dimension</a>
               </div>
             </div>
           </div>

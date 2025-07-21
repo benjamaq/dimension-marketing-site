@@ -84,7 +84,7 @@ export default function WhatMakesDimensionDifferentSection() {
                 {/* CTA Button */}
                 <div className="mt-6 flex justify-center md:justify-start">
                   <a
-                    href="#get-started"
+                    href="https://app.trydimension.com"
                     className="inline-block px-8 py-3 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg"
                   >
                     Get Started with Dimension
