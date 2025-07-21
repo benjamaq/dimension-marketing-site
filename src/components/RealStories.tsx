@@ -15,6 +15,38 @@ type Story = {
 
 const STORIES: Story[] = [
   {
+    key: 'jenna',
+    name: 'Jenna',
+    age: 32,
+    descriptor: `Training harder but feeling slower, race in 4 weeks.\n\nHEALTH CHALLENGES\n\n- Training plateau despite increased volume\n- Poor sleep (6 hours nightly)\n- Early overreaching symptoms\n\nLIFE CONTEXT\n\n- Competitive runner\n- Race in 4 weeks\n- Performance anxiety\n\nTECH & TRACKING\n📱 Strava — daily tracking, HRV monitoring\nENERGY & STRESS\nEnergy: ⚡ 6/10\nStress: 🔥 7/10\nTHE RIGHT SUPPORT\nData-driven training adjustments — someone who understands athletic performance.`,
+    responder: 'Elli',
+    responderAvatar: '/elli.png',
+    chat: [
+      { from: 'Jenna', text: "Ugh. Another terrible run. I’m training harder but I feel slower and heavy. What’s going on?" },
+      { from: 'Elli', text: "Hey Jenna. I took a look at your last 10 days on Strava—your pace has dropped about 8%, even though you’ve increased volume and frequency. That usually means your body’s under more stress than it can currently handle.\n\nQuick check-in: how’s sleep been? And any changes to your diet or stress levels?" },
+      { from: 'Jenna', text: "Sleep’s been a bit off—about 6 hours a night. Diet’s the same. Just feeling behind. The race is in 4 weeks." },
+      { from: 'Elli', text: "Totally hear you. The good news is: your fitness base is strong. But your recovery metrics show early signs of overreaching—HRV is slightly down, and your resting heart rate is up 4–5 bpm.\n\nWhat Elli recommends here is to adjust the workload, not stop it:\n\n- Add a full rest day this week\n- Shift one tempo run into a zone 2 jog\n- Prioritize 7–8 hours of sleep\n- Lighten strength training if you’re doing any\n\nWould you like me to send a modified training plan for the next 7 days based on Elli’s template?" },
+      { from: 'Jenna', text: "Yes, please. I don’t want to lose the progress—but I also don’t want to hit a wall." },
+      { from: 'Elli', text: "Smart call. Let’s keep your momentum—but make it sustainable. You’ve got this. 🏁" },
+    ],
+  },
+  {
+    key: 'marcus',
+    name: 'Marcus',
+    age: 28,
+    descriptor: `Feeling incredible on peptides, optimizing without overtraining.\n\nHEALTH CHALLENGES\n\n- Risk of overtraining euphoria\n- Balancing peptide benefits\n- Sustainable progression\n\nLIFE CONTEXT\n\n- Serious lifter\n- Biohacking approach\n- Performance optimization focus\n\nTECH & TRACKING\n💉 BPC-157 + Ipamorelin — peptide protocol, performance tracking\nENERGY & STRESS\nEnergy: 🚀 9/10\nStress: 😌 3/10\nTHE RIGHT SUPPORT\nExpert peptide guidance — someone who understands advanced protocols.`,
+    responder: 'Wil',
+    responderAvatar: '/will.png',
+    chat: [
+      { from: 'Marcus', text: "So I started BPC-157 and Ipamorelin last week… and I feel incredible. Crushed squats, hit a PR, barely sore today. Is that normal—or am I pushing too hard?" },
+      { from: 'Wil', text: "That’s a real and pretty common response, Marcus—especially with that combo. BPC-157 helps reduce inflammation and speeds up tissue repair, while Ipamorelin boosts growth hormone release, improving sleep, recovery, and muscle performance.\n\nBut Wil would say: don’t confuse rapid recovery with limitless capacity. Your nervous system, tendons, and connective tissue still need to catch up." },
+      { from: 'Marcus', text: "That’s what I was thinking. I feel like I could double my sets right now." },
+      { from: 'Wil', text: "Totally understandable—but Wil’s approach is to channel that energy, not burn it. Here's what he recommends:\n\n- Maintain intensity, but don’t increase volume this week\n- Focus on perfect reps, not piling on more sets\n- Watch for signs like disrupted sleep, irritability, or grip strength drop-offs\n\nWould you like me to adjust your program to ride this wave intelligently?" },
+      { from: 'Marcus', text: "Yeah, do it. I don’t want to waste this window—but I also don’t want to crash." },
+      { from: 'Wil', text: "Exactly. You’re not chasing a moment—you’re building a foundation. Let’s make this next phase your strongest yet. 🔥" },
+    ],
+  },
+  {
     key: 'rachel',
     name: 'Rachel',
     age: 39,
@@ -116,6 +148,16 @@ function ProfileCard({ story }: { story: Story }) {
   // Dynamic content functions (same as before)
   const getHealthChallenges = (key: string) => {
     const challenges = {
+      jenna: [
+        'Training plateau despite increased volume',
+        'Poor sleep (6 hours nightly)',
+        'Early overreaching symptoms'
+      ],
+      marcus: [
+        'Risk of overtraining euphoria',
+        'Balancing peptide benefits',
+        'Sustainable progression'
+      ],
       rachel: ['Constant fatigue despite 8hrs in bed', 'Light, broken sleep', 'Zero time for herself'],
       sine: ['Emotional eating cycles', 'Afternoon energy dips', 'Social isolation'],
       yara: ['Hormonal swings', 'Neck/shoulder pain', 'Low libido'],
@@ -127,6 +169,16 @@ function ProfileCard({ story }: { story: Story }) {
 
   const getLifeContext = (key: string) => {
     const context = {
+      jenna: [
+        'Competitive runner',
+        'Race in 4 weeks',
+        'Performance anxiety'
+      ],
+      marcus: [
+        'Serious lifter',
+        'Biohacking approach',
+        'Performance optimization focus'
+      ],
       rachel: ['Full-time work', 'Two small kids', 'Aging parents'],
       sine: ['Single mom', 'Freelance creative', 'Always "on"'],
       yara: ['Part-time teacher', 'Three teens', 'Manages home + eldercare'],
@@ -138,6 +190,8 @@ function ProfileCard({ story }: { story: Story }) {
 
   const getTechTracking = (key: string) => {
     const tech = {
+      jenna: '📱 Strava — daily tracking, HRV monitoring',
+      marcus: '💉 BPC-157 + Ipamorelin — peptide protocol, performance tracking',
       rachel: '🍎 Apple Watch — wears daily, ignores alerts',
       sine: '⌚ Garmin — tracks runs, ignores recovery',
       yara: '🚫 None — overwhelmed by tech',
@@ -149,6 +203,8 @@ function ProfileCard({ story }: { story: Story }) {
 
   const getEnergyStress = (key: string) => {
     const stats = {
+      jenna: { energy: '⚡ 6/10', stress: '🔥 7/10' },
+      marcus: { energy: '🚀 9/10', stress: '😌 3/10' },
       rachel: { energy: '🪫 2/10', stress: '🔥 9/10' },
       sine: { energy: '⚡️ 4/10', stress: '🔥 8/10' },
       yara: { energy: '🔋 3/10', stress: '🔥 8/10' },
@@ -160,6 +216,8 @@ function ProfileCard({ story }: { story: Story }) {
 
   const getSupport = (key: string) => {
     const support = {
+      jenna: 'Data-driven training adjustments — someone who understands athletic performance.',
+      marcus: 'Expert peptide guidance — someone who understands advanced protocols.',
       rachel: 'Practical, calming advice — someone who can cut through the noise.',
       sine: 'A non-judgmental mirror. Tools that fit her rhythm, not fight it.',
       yara: 'A nudge toward self-priority. Emotional space and daily sanity.',
