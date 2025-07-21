@@ -52,10 +52,10 @@ export default function Home() {
           <main className="flex flex-col items-center justify-center flex-1 w-full px-4 pt-10 pb-16">
             <div className="flex flex-col items-center justify-center w-full mt-2 mb-8">
               <h1 className="font-light text-gray-800 text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-center mb-6">
-                You&apos;ve carried your health <span className="rustic-underline">alone</span> for long enough
+                You've carried your health <span className="rustic-underline">alone</span> for long enough.
               </h1>
               <div className="text-2xl md:text-3xl text-gray-800 text-center font-light mb-2">
-                Not Anymore
+                Not Anymore.
               </div>
               
             </div>
