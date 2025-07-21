@@ -65,7 +65,7 @@ export default function WhatMakesDimensionDifferentSection() {
             <div className="bg-gradient-to-br from-gray-100 via-white to-gray-200 rounded-3xl shadow-xl border border-gray-100 px-0 md:px-8 py-10 flex flex-col md:flex-row gap-0 md:gap-4 items-stretch">
               {/* Left: Pills */}
               <div className="flex flex-col justify-center items-center md:items-start px-8 py-4 md:py-0 w-full md:w-1/2 gap-4">
-                {FEATURES.map((feature, idx) => (
+                {FEATURES.map((feature, ) => (
                   <div key={feature.title} className="bg-white/80 rounded-full px-6 py-3 text-lg text-gray-800 shadow border border-gray-100 max-w-xs w-full text-center flex items-center gap-2 font-semibold">
                     <span className="text-2xl mr-2">{feature.icon}</span>
                     {feature.title}
@@ -74,7 +74,7 @@ export default function WhatMakesDimensionDifferentSection() {
               </div>
               {/* Right: Messaging */}
               <div className="flex flex-col justify-center px-8 py-6 w-full md:w-1/2 gap-6">
-                {FEATURES.map((feature, idx) => (
+                {FEATURES.map((feature, ) => (
                   <div key={feature.title} className="mb-4">
                     <div className="text-base text-gray-700 mb-2">
                       {feature.description}
