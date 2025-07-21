@@ -18,7 +18,7 @@ const STORIES: Story[] = [
     key: 'jenna',
     name: 'Jenna',
     age: 32,
-    descriptor: `Training harder but feeling slower, race in 4 weeks.\n\nHEALTH CHALLENGES\n\n- Training plateau despite increased volume\n- Poor sleep (6 hours nightly)\n- Early overreaching symptoms\n\nLIFE CONTEXT\n\n- Competitive runner\n- Race in 4 weeks\n- Performance anxiety\n\nTECH & TRACKING\n📱 Strava — daily tracking, HRV monitoring\nENERGY & STRESS\nEnergy: ⚡ 6/10\nStress: 🔥 7/10\nTHE RIGHT SUPPORT\nData-driven training adjustments — someone who understands athletic performance.`,
+    descriptor: 'Training harder but feeling slower, race in 4 weeks.',
     responder: 'Elli',
     responderAvatar: '/elli.png',
     chat: [
@@ -34,7 +34,7 @@ const STORIES: Story[] = [
     key: 'marcus',
     name: 'Marcus',
     age: 28,
-    descriptor: `Feeling incredible on peptides, optimizing without overtraining.\n\nHEALTH CHALLENGES\n\n- Risk of overtraining euphoria\n- Balancing peptide benefits\n- Sustainable progression\n\nLIFE CONTEXT\n\n- Serious lifter\n- Biohacking approach\n- Performance optimization focus\n\nTECH & TRACKING\n💉 BPC-157 + Ipamorelin — peptide protocol, performance tracking\nENERGY & STRESS\nEnergy: 🚀 9/10\nStress: 😌 3/10\nTHE RIGHT SUPPORT\nExpert peptide guidance — someone who understands advanced protocols.`,
+    descriptor: 'Feeling incredible on peptides, optimizing without overtraining.',
     responder: 'Wil',
     responderAvatar: '/will.png',
     chat: [
