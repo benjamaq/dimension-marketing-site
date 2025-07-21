@@ -15,7 +15,7 @@ type Story = {
 
 const STORIES: Story[] = [
   {
-    key: 'jenna',
+    key: 'rachel',
     name: 'Jenna',
     age: 32,
     descriptor: 'Training harder but feeling slower, race in 4 weeks.',
@@ -47,7 +47,7 @@ const STORIES: Story[] = [
     ],
   },
   {
-    key: 'rachel',
+    key: 'jenna',
     name: 'Rachel',
     age: 39,
     descriptor: 'Holding everyone together, barely holding herself.',
