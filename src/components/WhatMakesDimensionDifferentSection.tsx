@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Button } from "./ui/button";
 
 const FEATURES = [
   {
@@ -82,16 +83,16 @@ export default function WhatMakesDimensionDifferentSection() {
                   </div>
                 ))}
                 {/* CTA Button */}
-                <div className="mt-6 flex justify-center md:justify-start">
-                  <a
-                    href="https://app.trydimension.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block px-8 py-2 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg self-center max-w-xs"
-                  >
-                    Get Started with Dimension
-                  </a>
-                </div>
+                <div className="mt-6 flex items-center justify-center md:justify-start">
+  <a
+    href="https://app.trydimension.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center rounded-full h-12 px-8 text-lg font-bold bg-black text-white shadow-lg hover:bg-gray-900 transition-colors"
+  >
+    Get Started with Dimension
+  </a>
+</div>
               </div>
             </div>
           </div>
