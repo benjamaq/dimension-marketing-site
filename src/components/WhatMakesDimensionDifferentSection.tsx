@@ -83,12 +83,13 @@ export default function WhatMakesDimensionDifferentSection() {
                   </div>
                 ))}
                 {/* CTA Button */}
-                <div className="mt-6 flex items-center justify-center md:justify-start">
+                <div className="mt-6 flex justify-center md:justify-start">
   <a
     href="https://app.trydimension.com"
     target="_blank"
     rel="noopener noreferrer"
-    className="inline-flex items-center justify-center rounded-full h-12 px-8 text-lg font-bold bg-black text-white shadow-lg hover:bg-gray-900 transition-colors"
+    className="inline-flex items-center justify-center rounded-full h-12 px-8 text-lg font-bold bg-black text-white shadow-lg hover:bg-gray-900 transition-colors cursor-pointer max-w-fit"
+    style={{ textDecoration: 'none' }}
   >
     Get Started with Dimension
   </a>
