@@ -87,7 +87,7 @@ export default function WhatMakesDimensionDifferentSection() {
                     href="https://app.trydimension.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-8 py-3 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg"
+                    className="inline-block px-8 py-2 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg self-center max-w-xs"
                   >
                     Get Started with Dimension
                   </a>
