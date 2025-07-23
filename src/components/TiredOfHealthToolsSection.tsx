@@ -50,7 +50,17 @@ export default function TiredOfHealthToolsSection() {
                   It doesn’t just track. It listens.<br />
                   It gets to know you, and helps you respond in real moments — with calm, clarity, and kindness.
                 </p>
-                <a href="https://app.trydimension.com" target="_blank" rel="noopener noreferrer" className="mt-2 px-6 py-3 rounded-full bg-gray-900 text-white font-semibold shadow hover:bg-black transition">Get Started with Dimension</a>
+                <div className="mt-6 flex justify-center md:justify-start">
+  <a
+    href="https://app.trydimension.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center rounded-full h-12 px-8 text-lg font-bold bg-black text-white shadow-lg hover:bg-gray-900 transition-colors cursor-pointer max-w-fit"
+    style={{ textDecoration: 'none' }}
+  >
+    Get Started with Dimension
+  </a>
+</div>
               </div>
             </div>
           </div>
