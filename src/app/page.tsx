@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Header from '@/components/Header';
 import RealStories from '@/components/RealStories';
 import TiredOfHealthToolsSection from '@/components/TiredOfHealthToolsSection';
 import WhatMakesDimensionDifferentSection from '@/components/WhatMakesDimensionDifferentSection';
@@ -42,13 +43,8 @@ export default function Home() {
 
         {/* HERO SECTION */}
         <div className="flex flex-col w-full">
-          <header className="w-full flex items-center justify-between px-10 pt-8">
-            <div className="flex items-center">
-              <img src="/logo.png" alt="DIMENSION Logo" width="40" height="40" className="mr-3" />
-              <span className="font-bold text-xl tracking-wide text-gray-900">DIMENSION</span>
-            </div>
-
-          </header>
+          {/* Header with Login button */}
+          <Header />
           <main className="flex flex-col items-center justify-center flex-1 w-full px-4 pt-10 pb-16">
             <div className="flex flex-col items-center justify-center w-full mt-2 mb-8">
               <h1 className="font-light text-gray-800 text-2xl md:text-3xl lg:text-4xl leading-tight tracking-tight text-center mb-6">
