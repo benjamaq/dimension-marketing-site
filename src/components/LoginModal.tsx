@@ -1,16 +1,17 @@
-"use client";
-import React, { useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+'use client';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import React from 'react';
 
-export default function LoginModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+interface LoginModalProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+export default function LoginModal({ open, onClose }: LoginModalProps) {
   if (!open) return null;
 
   const handleLogin = () => {
+    // For now, just redirect to the main app
     window.location.href = 'https://app.trydimension.com/onboarding?step=chat';
   };
 
