@@ -25,7 +25,7 @@ export default function LoginModal({ open, onClose }: { open: boolean; onClose: 
     if (error) {
       setError(error.message);
     } else if (data.user) {
-      window.location.href = "/onboarding?step=chat";
+      window.location.href = "https://app.trydimension.com/onboarding?step=chat";
     }
   };
 
