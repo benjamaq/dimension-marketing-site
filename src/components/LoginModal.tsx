@@ -1,6 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 interface LoginModalProps {
   open: boolean;
@@ -8,11 +14,31 @@ interface LoginModalProps {
 }
 
 export default function LoginModal({ open, onClose }: LoginModalProps) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
   if (!open) return null;
 
-  const handleLogin = () => {
-    // For now, just redirect to the main app
-    window.location.href = 'https://app.trydimension.com/onboarding?step=chat';
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    
+    const { data, error } = await supabase.auth.signInWithPassword({ 
+      email, 
+      password 
+    });
+    
+    setLoading(false);
+    
+    if (error) {
+      setError(error.message);
+    } else if (data.user) {
+      // Successful login - redirect to chat (skip coach selection)
+      window.location.href = 'https://app.trydimension.com/onboarding?step=chat';
+    }
   };
 
   return (
@@ -20,12 +46,34 @@ export default function LoginModal({ open, onClose }: LoginModalProps) {
       <div className="bg-white rounded-xl shadow-xl p-8 max-w-sm w-full relative">
         <button onClick={onClose} className="absolute top-3 right-3 text-gray-500 hover:text-black text-xl">×</button>
         <h2 className="text-xl font-bold mb-4 text-center">Login to Dimension</h2>
-        <button
-          onClick={handleLogin}
-          className="w-full bg-black text-white rounded px-4 py-2 font-semibold hover:bg-gray-900 transition"
-        >
-          Continue to App
-        </button>
+        {error && (
+          <div className="text-red-600 text-sm mb-4 text-center">{error}</div>
+        )}
+        <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="border rounded px-3 py-2 outline-none focus:ring w-full"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="border rounded px-3 py-2 outline-none focus:ring w-full"
+            required
+          />
+          <button
+            type="submit"
+            className="bg-black text-white rounded px-4 py-2 font-semibold hover:bg-gray-900 transition disabled:opacity-60"
+            disabled={loading}
+          >
+            {loading ? 'Logging in...' : 'Login'}
+          </button>
+        </form>
       </div>
     </div>
   );
