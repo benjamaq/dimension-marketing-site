@@ -94,7 +94,7 @@ export default function Home() {
             </div>
             {/* CTA SECTION */}
             <div className="w-full flex flex-col items-center my-8">
-              <a href="https://app.trydimension.com" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg">
+              <a href="https://app.trydimension.com/onboarding" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg">
                 Get Started Now
               </a>
             </div>
