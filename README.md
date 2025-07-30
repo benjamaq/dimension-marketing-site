@@ -36,3 +36,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 // Force latest deployment Tue Jul 29 12:11:48 CEST 2025
 // Force redeploy with env vars Tue Jul 29 12:30:11 CEST 2025
+// Force redeploy with matching Supabase credentials Tue Jul 29 15:46:14 CEST 2025

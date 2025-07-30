@@ -32,7 +32,7 @@ export default function PricingSection() {
             ))}
           </ul>
           <div className="flex flex-col items-center">
-            <a href="https://app.trydimension.com/onboarding" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg mb-2">
+            <a href="https://app.trydimension.com/onboarding?new=true" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-3 bg-black text-white font-bold rounded-full shadow-lg hover:bg-gray-900 transition-colors text-lg mb-2">
               Start Coaching for $19/month
             </a>
             <div className="text-xs text-gray-500 text-center max-w-xs">Lock in the Beta rate before public launch.</div>
